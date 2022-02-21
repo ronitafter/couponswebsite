@@ -17,8 +17,6 @@ function AdminMenu(): JSX.Element {
    });
    return (
       <div className="adminMenu" id="adminMenu">
-
-
          <Typography variant="h4" className="HeadLine">Menu</Typography><br />
          <ul>
             <li><NavLink className="a" to="/addCompany">AddCompany</NavLink></li> <br />
