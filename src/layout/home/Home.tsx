@@ -1,9 +1,11 @@
-import React from 'react'
+import "./Home.css";
 
-function Home() {
+function Home(): JSX.Element {
   return (
-    <div>Home</div>
-  )
+    <div className="Home">
+      <h1>This home</h1>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

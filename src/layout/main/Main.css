@@ -6,3 +6,8 @@
     align-items: center;
     background-color: #D8D2CB;
 }
+
+.Main > .Routing{
+    height: 100%;
+    width: 100%;
+}

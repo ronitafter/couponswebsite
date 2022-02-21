@@ -4,7 +4,7 @@ import "./Footer.css";
 function Footer(): JSX.Element {
    return (
       <div className="Footer">
-         <div>Ofir Abraham</div>
+         <div>Ronit After</div>
 
          <div className="social">
             <FaGithub />
