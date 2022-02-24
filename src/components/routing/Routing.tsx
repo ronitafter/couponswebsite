@@ -28,6 +28,7 @@ import EmptyView from "../layout/emptyview/EmptyView";
 import DeleteCompany from "../users/admin/DeleteCompany";
 // import App from "../App";
 import "./Routing.css";
+import GetAllCompanies from "../users/admin/GetAllCompanies";
 
 
 function Routing(): JSX.Element {
@@ -36,16 +37,16 @@ function Routing(): JSX.Element {
          <Routes>
             {/* GENERAL*/}
             <Route path="/home" element={<Home />} />
-            <Route path="/Login" element={Login} />
-            <Navigate to="/home" />
-            <Route element={Page404} /> {/* Last */}
-            <Route element={EmptyView} /> {/* Last */}
+            <Route path="/Login" element={<Login />} />
+            {/*<Route to="/home" />*/}
+            <Route element={<Page404 />} /> {/* Last */}
+            <Route element={<EmptyView />} /> {/* Last */}
             {/*ADMIN*/}
-            <Route path="/admin/AddCompany" element={AddCompany} />
-            <Route path="/admin/UpdateCompany" element={UpdateCompany} />
-            <Route path="/admin/GetOneCompany" element={GetOneCompany} />
-            <Route path="/admin/DeleteCompany" element={DeleteCompany} />
-            <Route path="/admin/getAllCompanies" element={getAllCompanies} />
+            <Route path="/admin/AddCompany" element={<AddCompany />} />
+            <Route path="/admin/UpdateCompany" element={<UpdateCompany />} />
+            <Route path="/admin/GetOneCompany" element={<GetOneCompany />} />
+            <Route path="/admin/DeleteCompany" element={<DeleteCompany />} />
+            <Route path="/admin/getAllCompanies" element={<GetAllCompanies />} />
             <Route path="/admin/getOneCustomer/:customerId" element={<GetOneCustomer />} />
             <Route path="/admin/AddCustomer" element={<AddCustomer />} />
             <Route path="/admin/UpdateCustomer/:customerId" element={<UpdateCustomer />} />

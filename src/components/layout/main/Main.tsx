@@ -8,7 +8,6 @@ function Main(): JSX.Element {
       <div className="Main">
          <Routing />
          <Outlet />
-
          <FaFortAwesome />
       </div>
    );
