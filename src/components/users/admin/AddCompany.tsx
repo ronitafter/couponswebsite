@@ -40,7 +40,6 @@ function AddCompany(): JSX.Element {
         notify.success("successfully added");
         navigate("/adminMenu");
       }).catch(error => {
-
         notify.error("error while adding a company")
       });
   }

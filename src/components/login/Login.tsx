@@ -24,8 +24,8 @@ function Login(): JSX.Element {
   function send(clientModel: ClientModel) {
 
     console.log(clientModel.clientType);
-    /*console.log(globals.urls.administrator+"Login");*/
-    /*console.log(userDetails);*/
+    console.log(Globals.urls.administrator+"Login");
+    console.log(clientModel);
     if (clientModel.clientType == "Administrator") {
       axios.post(Globals.urls.administrator + "Login", clientModel)
         .then((response) => {
@@ -66,7 +66,7 @@ function Login(): JSX.Element {
     }
   }
   return (
-    <div className="LoginFC">
+    <div className="Login">
       <div className="login">
         <form onSubmit={handleSubmit(send)}>
           <Typography variant="h4" className="HeadLine">Log in to your Coupons account</Typography><br />

@@ -2,13 +2,13 @@
 class ClientModel {
    email!: string;
    password!: string;
-   clientType!: clientType;
+   clientType!: String;
 }
 
-enum clientType {
-   company = "Company",
-   customer = "Customer",
-   admin = "Admin"
-}
+// enum clientType {
+//    company = "Company",
+//    customer = "Customer",
+//    admin = "Admin"
+// }
 
 export default ClientModel;

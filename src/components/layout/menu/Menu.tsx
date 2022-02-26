@@ -5,13 +5,13 @@ function Menu(): JSX.Element {
 
    return (
       <div className="Menu">
-
-      <h1>Menu</h1>
+         <h3>Main Page....</h3>
+         <h1>Menu</h1>
          <div className="links">
-            <Link to="/admin">Admin</Link>
-            <Link to="/customer">Customer</Link>
-            <Link to="/company">Company</Link>
-            
+            <Link to="/AdmainPage">AdmainPage</Link>
+            <Link to="/CompanyPage">CompanyPage</Link>
+            <Link to="/CustomerPage">CustomerPage</Link>
+
          </div>
       </div>
    );

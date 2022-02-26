@@ -23,7 +23,7 @@ function CouponDetails(props: CouponDetailsProps): JSX.Element {
    }, []);
 
    function purchaseCoupon() {
-      if (Store.getState().StoreState.loginClient.clientType != "Customer") {
+      if (Store.getState().StoreState.loginClient.userType != "Customer") {
          notify.error("Log in to purchase coupons");
       }
       axios.post<string>(Globals.urls.customer + "purchaseCoupon", couponModel, { headers: { "authorization": token } })

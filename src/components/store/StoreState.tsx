@@ -1,20 +1,20 @@
-import Client from "../models/Client";
 import ClientModel from "../models/ClientModel";
 import jwt_decode from "jwt-decode";
 import { stringify } from "querystring";
 import jwtDecode from "jwt-decode";
 import { FormatListBulletedOutlined } from "@mui/icons-material";
+import OnlineClient from "../models/OnlineClient";
 
 //
 export class StoreState {
-   public loginClient: Client = new Client();
+   public loginClient: OnlineClient = new OnlineClient();
    public isLoggein: boolean = false;
 }
 
 export enum StoreActionType {
    LoginClient = "LoginClient",
    LogoutClient = "LogoutClient",
-   RegisterUser = "RegisteUser",
+   RegisterClient = "RegisterClient",
    LoginClientString = "LoginClientString",
    IsLoggedIn = "IsLoggedIn"
 
@@ -25,8 +25,8 @@ export interface StoreAction {
    payload?: any,
 }
 
-export function loginClient(user: Client): StoreAction {
-   return { type: StoreActionType.LoginClient, payload: user }
+export function loginClient(onlineClient: OnlineClient): StoreAction {
+   return { type: StoreActionType.LoginClient, payload: onlineClient }
 }
 
 export function logoutClient(): StoreAction {
@@ -38,7 +38,7 @@ export function isLoged(isLogin: boolean): StoreAction {
 }
 
 export function registerClient(newClient: ClientModel): StoreAction {
-   return { type: StoreActionType.RegisterUser, payload: newClient }
+   return { type: StoreActionType.RegisterClient, payload: newClient }
 }
 
 export function loginClientString(token: string): StoreAction {
@@ -59,14 +59,14 @@ export function storeReducer(currentState: StoreState = new StoreState(), action
          newState.isLoggein = true;
          break;
       case StoreActionType.LogoutClient:
-         newState.loginClient = new Client();
+         newState.loginClient = new OnlineClient();
          //remove the token from local storage
          localStorage.removeItem("token");
          localStorage.removeItem("clientType");
          localStorage.removeItem("id");
          newState.isLoggein = false;
          break;
-      case StoreActionType.RegisterUser:
+      case StoreActionType.RegisterClient:
          //axios->login->data->loginUser
 
          break;

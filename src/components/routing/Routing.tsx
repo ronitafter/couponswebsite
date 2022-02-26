@@ -29,6 +29,12 @@ import DeleteCompany from "../users/admin/DeleteCompany";
 // import App from "../App";
 import "./Routing.css";
 import GetAllCompanies from "../users/admin/GetAllCompanies";
+import AdmainPage from "../users/admin/AdmainPage";
+import AdminMenu from "../users/admin/AdminMenu";
+import CompanyPage from "../users/company/CompanyPage";
+import CompanyMenu from "../users/company/CompanyMenu";
+import CustomerMenu from "../users/customer/CustomerMenu";
+import CustomerPage from "../users/customer/CustomerPage";
 
 
 function Routing(): JSX.Element {
@@ -42,6 +48,8 @@ function Routing(): JSX.Element {
             <Route element={<Page404 />} /> {/* Last */}
             <Route element={<EmptyView />} /> {/* Last */}
             {/*ADMIN*/}
+            <Route path="/AdmainPage" element={<AdmainPage />} />
+            <Route path="/AdminMenu" element={<AdminMenu />} />
             <Route path="/admin/AddCompany" element={<AddCompany />} />
             <Route path="/admin/UpdateCompany" element={<UpdateCompany />} />
             <Route path="/admin/GetOneCompany" element={<GetOneCompany />} />
@@ -53,6 +61,8 @@ function Routing(): JSX.Element {
             <Route path="/admin/DeleteCustomer/:companyId" element={<DeleteCustomer />} />
             <Route path="/admin/GetAllCustomers/:companyId" element={<GetAllCustomers />} />
             {/* COMPANY*/}
+            <Route path="/CompanyPage" element={<CompanyPage />} />
+            <Route path="/CompanyMenu" element={<CompanyMenu />} />
             <Route path="/company/UpdateCoupon" element={<UpdateCoupon />} />
             <Route path="/company/AddCoupons" element={<AddCoupons />} />
             <Route path="/company/DeleteCoupon" element={<DeleteCoupon />} />
@@ -60,6 +70,8 @@ function Routing(): JSX.Element {
             <Route path="/company/GetCompanyCouponsByPrice" element={<GetCompanyCouponsByPrice />} />
             <Route path="/company/GetCompanyCouponsByCategory" element={<GetCompanyCouponsByCategory />} />
             {/* CUSTOMER*/}
+            <Route path="/CustomerPage" element={<CustomerPage />} />
+            <Route path="/CustomerMenu" element={<CustomerMenu />} />
             <Route path="/customer/PurchaseCoupon" element={<PurchaseCoupon />} />
             <Route path="/customer/GetCouponsByCategory" element={<GetCouponsByCategory />} />
             <Route path="/customer/GetCouponsByPrice" element={<GetCouponsByPrice />} />
