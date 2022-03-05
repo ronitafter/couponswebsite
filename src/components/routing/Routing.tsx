@@ -24,7 +24,6 @@ import GetAllCoupons from "../users/customer/GetAllCoupons";
 import GetCompanyCouponsByCategory from "../users/company/GetCompanyCouponsByCategory";
 import GetCompanyCouponsByPrice from "../users/company/GetCompanyCouponsByPrice";
 import EmptyView from "../layout/emptyview/EmptyView";
-// import AdminMenu from "../layout/menu/AdminMenu";
 import DeleteCompany from "../users/admin/DeleteCompany";
 // import App from "../App";
 import "./Routing.css";
@@ -35,18 +34,22 @@ import CompanyPage from "../users/company/CompanyPage";
 import CompanyMenu from "../users/company/CompanyMenu";
 import CustomerMenu from "../users/customer/CustomerMenu";
 import CustomerPage from "../users/customer/CustomerPage";
+import CouponsList from "../props/CouponsList";
 
 
 function Routing(): JSX.Element {
    return (
       <div className="Routing">
          <Routes>
+            
             {/* GENERAL*/}
             <Route path="/home" element={<Home />} />
+
+            <Route path="/CouponsList" element={<CouponsList />} />
             <Route path="/Login" element={<Login />} />
             {/*<Route to="/home" />*/}
             <Route element={<Page404 />} /> {/* Last */}
-            <Route element={<EmptyView />} /> {/* Last */}
+            <Route element={<EmptyView msg={""} />} /> {/* Last */}
             {/*ADMIN*/}
             <Route path="/AdmainPage" element={<AdmainPage />} />
             <Route path="/AdminMenu" element={<AdminMenu />} />

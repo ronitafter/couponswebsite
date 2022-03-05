@@ -20,11 +20,14 @@
 .App > .Menu{
     grid-column: span 2;
     width: 100%;
+    background-color:black;
 }
 
 
 .App > .Main{
     grid-column: span 10;
+    background-color:white;
+
 }
 
 .App > .Home{

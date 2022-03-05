@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 import { stringify } from "querystring";
 import jwtDecode from "jwt-decode";
 import { FormatListBulletedOutlined } from "@mui/icons-material";
-import OnlineClient from "../models/OnlineClient";
+import OnlineClient from "../models/ClientDetails";
 
 //
 export class StoreState {

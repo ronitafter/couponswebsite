@@ -5,13 +5,15 @@ import Header from './components/layout/header/Header';
 import Main from './components/layout/main/Main';
 import AdminMenu from './components/users/admin/AdminMenu';
 import Menu from './components/layout/menu/Menu';
+import { Dashboard, Home, Login } from '@mui/icons-material';
+import CouponsList from './components/props/CouponsList';
 
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Menu />
+       <Menu />
       <Main />
       <Footer />
 

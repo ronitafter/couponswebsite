@@ -1,11 +1,11 @@
-class OnlineClient {
+class ClientDetails {
 
    [x: string]: string;
-   userId: string = "";
+   clientId: string = "";
    token: string = "";
    clientType: string = "";
 
 }
 
 
-export default OnlineClient;
+export default ClientDetails;

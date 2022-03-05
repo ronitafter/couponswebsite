@@ -11,8 +11,35 @@ import { loginClientString } from "../store/StoreState";
 import notify from "../utils/Notify";
 import LockIcon from '@mui/icons-material/Lock';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import { Form } from "react-bootstrap";
+import LoginModel from "./LoginModel";
+// import { zodResolver } from '@hookform/resolvers/zod';
+// import { LoginModel } from "./LoginModel";
+// import { z } from "zod";
+
+
+
 
 function Login(): JSX.Element {
+
+  
+  
+  // const schema = z.object({
+
+  //   email: z.string().email().nonempty("Email is required"),
+  //   password: z.string().min(4).max(15).nonempty("Password is required"),
+  //   clientType: z.string().nonempty("Client Type is required")
+
+  // });
+
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: {isSubmitting, isDirty, isValid },
+  // } = useForm<LoginModel>({
+  //   mode: "all",
+  //   resolver: zodResolver(schema),
+  // });
 
   const { register, handleSubmit, setError, formState: { errors } } = useForm<ClientModel>();
 
@@ -24,16 +51,16 @@ function Login(): JSX.Element {
   function send(clientModel: ClientModel) {
 
     console.log(clientModel.clientType);
-    console.log(Globals.urls.administrator+"Login");
+    console.log(Globals.urls.administrator + "Login");
     console.log(clientModel);
-    if (clientModel.clientType == "Administrator") {
+    if (clientModel.clientType === "Admin") {
       axios.post(Globals.urls.administrator + "Login", clientModel)
         .then((response) => {
           console.log(response.data);
           setToken(response.data);
           Store.dispatch(loginClientString(response.data));
           notify.success("successfully loged in");
-          navigate("/adminMenu");
+          navigate("/AdmainPage");
         }).catch(error => {
           console.log(error)
           notify.error("you can't touch this !!!");
@@ -60,7 +87,8 @@ function Login(): JSX.Element {
           notify.success("successfully loged in");
           navigate("/customerMenu");
         }).catch(error => {
-          notify.error("you can't touch this !!!");
+          console.error(`Exception at axios on Login, error: ${error}`);
+          //notify.error("you can't touch this !!!");
           setToken("Error in getting response from the server");
         });
     }
@@ -109,17 +137,20 @@ function Login(): JSX.Element {
             <Button type="submit" color="primary">Send</Button>
           </ButtonGroup><br />
 
-          <Typography variant="h6" className="HeadLine">Don't have account? Sign up right now</Typography><br />
+          
+          {/* <ButtonGroup variant="contained" fullWidth>
+          <button disabled={!isDirty || !isValid} name="submit" type="submit" className="btn btn-primary">Login</button>
+          //   <Button onClick={() => { navigate("/registration"); }} color="secondary">Sign up</Button>
+            // </ButtonGroup><br //
+                    <Typography variant="h6" className="HeadLine">Don't have account? Sign up right now</Typography><br />
 
-          <ButtonGroup variant="contained" fullWidth>
-            <Button onClick={() => { navigate("/registration"); }} color="secondary">Sign up</Button>
-          </ButtonGroup><br />
+          */}
 
         </form>
       </div>
-
     </div>
   );
 }
+
 
 export default Login;
