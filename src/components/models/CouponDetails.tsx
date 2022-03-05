@@ -16,7 +16,7 @@ function CouponDetails(props: CouponDetailsProps): JSX.Element {
 
 
    useEffect(() => {
-      axios.get(Globals.urls.guest + "oneCouponById/" + props.id).then((response) => {
+      axios.get(Globals.urls.administrator + "oneCouponById/" + props.id).then((response) => {
          setCouponModel(response.data)
          console.log(response.data);
       }).catch(error => { console.log(error) });
