@@ -16,12 +16,9 @@ import LoginModel from "./LoginModel";
 
 function Login(): JSX.Element {
 
-
-
   const { register, handleSubmit, setError, formState: { errors } } = useForm<ClientModel>();
 
   const [jwtToken, setToken] = useState("User has no token, bad bad user !!!");
-
   const navigate = useNavigate();
 
 
