@@ -13,17 +13,17 @@ function Sidebar() {
       <ListGroup className='d'>
         <ListGroup.Item>
           <Link to='/AdmainPage'>AdminPage</Link>
-          <AdminMenu />
+          {/*<AdminMenu />*/}
         </ListGroup.Item>
         <ListGroup className='d'>
           <ListGroup.Item>
             <Link to='/CompanyPage'>CompanyPage</Link>
-            <CompanyMenu />
+            {/*CompanyMenu />*/}
           </ListGroup.Item>
           <ListGroup className='d'>
           <ListGroup.Item>
             <Link to='/CustomerPage'>CustomerPage</Link>
-            <CustomerMenu />
+             {/*<CustomerMenu />*/}
           </ListGroup.Item>
           </ListGroup>
         </ListGroup>
@@ -35,3 +35,6 @@ function Sidebar() {
 }
 
 export default Sidebar
+
+
+

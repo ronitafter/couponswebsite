@@ -13,33 +13,10 @@ import LockIcon from '@mui/icons-material/Lock';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { Form } from "react-bootstrap";
 import LoginModel from "./LoginModel";
-// import { zodResolver } from '@hookform/resolvers/zod';
-// import { LoginModel } from "./LoginModel";
-// import { z } from "zod";
-
-
-
 
 function Login(): JSX.Element {
 
-  
-  
-  // const schema = z.object({
 
-  //   email: z.string().email().nonempty("Email is required"),
-  //   password: z.string().min(4).max(15).nonempty("Password is required"),
-  //   clientType: z.string().nonempty("Client Type is required")
-
-  // });
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: {isSubmitting, isDirty, isValid },
-  // } = useForm<LoginModel>({
-  //   mode: "all",
-  //   resolver: zodResolver(schema),
-  // });
 
   const { register, handleSubmit, setError, formState: { errors } } = useForm<ClientModel>();
 
@@ -48,7 +25,7 @@ function Login(): JSX.Element {
   const navigate = useNavigate();
 
 
-  function send(clientModel: ClientModel) {
+  function send(clientModel: any) {
 
     console.log(clientModel.clientType);
     console.log(Globals.urls.administrator + "Login");
@@ -66,7 +43,7 @@ function Login(): JSX.Element {
           notify.error("you can't touch this !!!");
           setToken("Error in getting response from the server");
         });
-    } if (clientModel.clientType == "Company") {
+    } if (clientModel.clientType === "Company") {
       axios.post<string>(Globals.urls.company + "Login", clientModel)
         .then((response) => {
           console.log(response.data);
@@ -78,7 +55,7 @@ function Login(): JSX.Element {
           notify.error("you can't touch this !!!");
           setToken("Error in getting response from the server");
         });
-    } if (clientModel.clientType == "Customer") {
+    } if (clientModel.clientType === "Customer") {
       axios.post<string>(Globals.urls.customer + "Login", clientModel)
         .then((response) => {
           console.log(response.data);
@@ -137,7 +114,7 @@ function Login(): JSX.Element {
             <Button type="submit" color="primary">Send</Button>
           </ButtonGroup><br />
 
-          
+
           {/* <ButtonGroup variant="contained" fullWidth>
           <button disabled={!isDirty || !isValid} name="submit" type="submit" className="btn btn-primary">Login</button>
           //   <Button onClick={() => { navigate("/registration"); }} color="secondary">Sign up</Button>

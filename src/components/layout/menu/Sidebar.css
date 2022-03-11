@@ -1,9 +1,76 @@
-.d {
-    width:100%;
-  height:100%;
-  margin:0px;    
-  background-color: rgb(195, 143, 255);
-    align-items: center;
-  justify-content: center;
-  text-align:center;  
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
 }
+
+.SideBar.active{
+    left: 0px;
+}
+.SideBar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: #57626F;
+    /*border-right: 4px solid #E0E5EA;*/
+    left: -255px;
+    display: flex;
+    z-index: 9999;
+
+    -moz-transition: all 600ms;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+}
+
+.SideBar ul li:first-child{
+    text-align: center;
+    color: white;
+    font-size: 1.95em;
+    list-style: none;
+    padding: 25px 10px 10px 10px;
+}
+
+.SideBar ul li:not(:first-child){
+    width: 70%;
+    margin-left: 10%;
+    font-size: 1.1em;
+    list-style: none;
+    padding: 15px 10px;
+}
+
+.SideBar ul li a {
+    color: #dfe5eb;
+    text-decoration: none;
+}
+
+.SideBar ul li a:hover {
+    color: #59e9Df;
+
+}
+
+.toggle-btn {
+    position: absolute;
+    left: 270px;
+    top: 20px;
+    background: #E0E5EA;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.toggle-btn:hover{
+    background-color: #556270;
+}
+.toggle-btn:hover span{
+    background-color: #fafafa;
+}
+
+.toggle-btn span {
+    display: block;
+    width: 25px;
+    height: 4px;
+    background-color: #666;
+    margin: 4px 0;
+}
+
+

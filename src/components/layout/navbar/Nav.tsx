@@ -6,15 +6,15 @@ function NavBar() {
       <div>
          <Navbar bg="dark" variant="dark">
             <Container>
-               <Navbar.Brand href="#home">Coupon System</Navbar.Brand>
+               <Navbar.Brand href="/home">Coupon System</Navbar.Brand>
                <Nav className="me-auto">
                   <Nav.Link href="/home">Home</Nav.Link>
                   <Nav.Link href="/Login">Login</Nav.Link>
                   <Nav.Link href="/Logout">Logout</Nav.Link>
                   <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                     <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                     <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                     <NavDropdown.Item href="/AdminPage">Admin</NavDropdown.Item>
+                     <NavDropdown.Item href="/CompanyPage">Company</NavDropdown.Item>
+                     <NavDropdown.Item href="/CustomerPage">Customer</NavDropdown.Item>
                      <NavDropdown.Divider />
                      <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                   </NavDropdown>

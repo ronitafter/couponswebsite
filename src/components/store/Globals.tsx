@@ -1,18 +1,13 @@
 class Globals { }
-
 class DevelopmentGlobals extends Globals {
    public urls = {
       administrator: "/admin",
       company: "/company",
       customer: "/customer",
       images: "/images",
-      login: "/admin/login",
-
-
-     
+      login: "/admin/login",  
    }
 }
-
 class ProductionGlobals extends Globals {
    public urls = {
       administrator: "/admin/",

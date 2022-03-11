@@ -15,15 +15,16 @@ import { Box, Typography } from "@mui/material";
 
 
   function GetCouponsByCategory(): JSX.Element {
+    const navigate = useNavigate();
     useEffect(() => {
 
       if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
         notify.error("you are not allowed to enter!")
         navigate("/login");
       }
-    });
+    },[]);
+
     const [couponModel, setCouponModel] = useState([new CouponModel()]);
-    const navigate = useNavigate();
     const [value, setValue] = useState<String>();
     let token: string = Store.getState().StoreState.loginClient.token;
 

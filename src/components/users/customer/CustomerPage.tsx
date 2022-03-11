@@ -9,7 +9,7 @@ function CustomerPage() {
   return (
     <div>
       <CouponsList />
-
+      <CustomerMenu/>
     </div>
   )
 }

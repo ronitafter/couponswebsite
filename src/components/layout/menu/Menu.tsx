@@ -7,10 +7,7 @@ function Menu(): JSX.Element {
 
    return (
       <div className="Menu">
-         <h3>Main Page....</h3>
-         <Sidebar />
-
-
+        {/*/ <Sidebar />/*/}
       </div>
    );
 }

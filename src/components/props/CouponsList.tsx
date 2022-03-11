@@ -46,7 +46,7 @@ function CouponsList(): JSX.Element {
             return [
                <>  <div key={coup.id}>
                   <div id="card">
-                     <img src="https://mumlatzim.me/wp-content/uploads/2019/11/printable-coupons-1_large.png" alt="coupon" />
+                     <img src="https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif" alt="coupon" />
                      <div id="headline1">
                         <h1>{coup.title}</h1>
                      </div>

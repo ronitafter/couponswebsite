@@ -1,6 +1,5 @@
 import { FaFortAwesome } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
-import CouponsList from "../../props/CouponsList";
 import Routing from "../../routing/Routing";
 import "./Main.css";
 

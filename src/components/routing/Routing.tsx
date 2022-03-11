@@ -35,6 +35,7 @@ import CompanyMenu from "../users/company/CompanyMenu";
 import CustomerMenu from "../users/customer/CustomerMenu";
 import CustomerPage from "../users/customer/CustomerPage";
 import CouponsList from "../props/CouponsList";
+import {ROUTES} from './constants';
 
 
 function Routing(): JSX.Element {
@@ -43,7 +44,7 @@ function Routing(): JSX.Element {
          <Routes>
             
             {/* GENERAL*/}
-            <Route path="/home" element={<Home />} />
+            <Route path={ROUTES.HOME} element={<Home />} />
 
             <Route path="/CouponsList" element={<CouponsList />} />
             <Route path="/Login" element={<Login />} />

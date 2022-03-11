@@ -23,7 +23,7 @@ function CustomerMenu(): JSX.Element {
             <ListGroup.Item><NavLink className="a" to="/PurchaseCoupon">PurchaseCoupon</NavLink></ListGroup.Item>
             <ListGroup.Item><NavLink className="a" to="/GetCouponsByPrice">GetCouponsByPrice</NavLink></ListGroup.Item>
             <ListGroup.Item><NavLink className="a" to="/GetCustomerDetails">GetCustomerDetails</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/findCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/customer/GetCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
             <ListGroup.Item><NavLink className="a" to="/GetAllCoupons">GetAllCoupons</NavLink></ListGroup.Item>
          </ListGroup>
       </div>
