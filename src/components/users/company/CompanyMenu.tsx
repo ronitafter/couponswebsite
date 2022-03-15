@@ -20,13 +20,13 @@ function CompanyMenu(): JSX.Element {
       <div className="companyMenu" id="companyMenu">
          <Typography variant="h4" className="HeadLine"></Typography><br />    
          <ListGroup className='d'>
-            <ListGroup.Item><NavLink className="a" to="/addCoupon">addCoupon</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="company/addCoupon">addCoupon</NavLink></ListGroup.Item>
             <ListGroup.Item><NavLink className="a" to="/deleteCoupon">deleteCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/getCompanyCoupons">getCompanyCoupons</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/UpdateCoupon">UpdateCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/GetCompanyCouponsByCategory">GetCompanyCouponsByCategory</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/findCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/GetCompanyDetails">GetCompanyDetails</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/company/getCompanyCoupons">getCompanyCoupons</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/company/UpdateCoupon">UpdateCoupon</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/company/GetCompanyCouponsByCategory">GetCompanyCouponsByCategory</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/company/findCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/company/GetCompanyDetails">GetCompanyDetails</NavLink></ListGroup.Item>
          </ListGroup>
       </div>
    );

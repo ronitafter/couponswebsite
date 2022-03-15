@@ -26,22 +26,19 @@ function AddCompany(): JSX.Element {
     }
   });
 
-  const { register, handleSubmit, setError, formState: { errors } } = useForm<CompanyDetails>();
+  const { register, handleSubmit, reset: resetForm, formState: { errors } } = useForm<CompanyDetails>();
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
 
-  function send(companyDetails: CompanyDetails) {
-    console.log(companyDetails);
-    console.log(Globals.urls.administrator + "addCompany");
-    axios.post<string>(Globals.urls.administrator + "addCompany", companyDetails, { headers: { "authorization": token } })
-      .then((response) => {
-        console.log(response.data);
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-        notify.success("successfully added");
-        navigate("/adminMenu");
-      }).catch(error => {
-        notify.error("error while adding a company")
-      });
+
+  async function send(companyDetails: CompanyDetails) {
+    try {
+      await axios.post<string>(Globals.urls.administrator + "/company", companyDetails, { headers: { "authorization": token } })
+      notify.success('Successfully added company');
+      resetForm();
+    } catch (e) {
+      notify.error('Error while adding a company');
+    }
   }
 
   return (

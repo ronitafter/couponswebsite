@@ -20,11 +20,11 @@ function CustomerMenu(): JSX.Element {
       <div className="customerMenu" id="customerMenu">
          <Typography variant="h4" className="HeadLine"></Typography><br />
          <ListGroup className='d'>
-            <ListGroup.Item><NavLink className="a" to="/PurchaseCoupon">PurchaseCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/GetCouponsByPrice">GetCouponsByPrice</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/GetCustomerDetails">GetCustomerDetails</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/customer/PurchaseCoupon">PurchaseCoupon</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/customer/GetCouponsByPrice">GetCouponsByPrice</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/customer/GetCustomerDetails">GetCustomerDetails</NavLink></ListGroup.Item>
             <ListGroup.Item><NavLink className="a" to="/customer/GetCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/GetAllCoupons">GetAllCoupons</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/customer/GetAllCoupons">GetAllCoupons</NavLink></ListGroup.Item>
          </ListGroup>
       </div>
    );

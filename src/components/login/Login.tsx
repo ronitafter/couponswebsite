@@ -18,55 +18,30 @@ function Login(): JSX.Element {
 
   const { register, handleSubmit, setError, formState: { errors } } = useForm<ClientModel>();
 
-  const [jwtToken, setToken] = useState("User has no token, bad bad user !!!");
+
   const navigate = useNavigate();
 
 
-  function send(clientModel: any) {
+  async function send(clientModel: ClientModel) {
+    const paramsByType = {
+      Administrator: { apiUrl: `${Globals.urls.administrator}/login`, redirectPage: '/AdminPage' },
+      Company: { apiUrl: `${Globals.urls.company}/login`, redirectPage: '/companyMenu' }, Customer: { apiUrl: `${Globals.urls.customer}/login`, redirectPage: '/customerMenu' }
+    }
 
-    console.log(clientModel.clientType);
-    console.log(Globals.urls.administrator + "Login");
-    console.log(clientModel);
-    if (clientModel.clientType === "Admin") {
-      axios.post(Globals.urls.administrator + "Login", clientModel)
-        .then((response) => {
-          console.log(response.data);
-          setToken(response.data);
-          Store.dispatch(loginClientString(response.data));
-          notify.success("successfully loged in");
-          navigate("/AdmainPage");
-        }).catch(error => {
-          console.log(error)
-          notify.error("you can't touch this !!!");
-          setToken("Error in getting response from the server");
-        });
-    } if (clientModel.clientType === "Company") {
-      axios.post<string>(Globals.urls.company + "Login", clientModel)
-        .then((response) => {
-          console.log(response.data);
-          setToken(response.data);
-          Store.dispatch(loginClientString(response.data));
-          notify.success("successfully loged in");
-          navigate("/companyMenu");
-        }).catch(error => {
-          notify.error("you can't touch this !!!");
-          setToken("Error in getting response from the server");
-        });
-    } if (clientModel.clientType === "Customer") {
-      axios.post<string>(Globals.urls.customer + "Login", clientModel)
-        .then((response) => {
-          console.log(response.data);
-          setToken(response.data);
-          Store.dispatch(loginClientString(response.data));
-          notify.success("successfully loged in");
-          navigate("/customerMenu");
-        }).catch(error => {
-          console.error(`Exception at axios on Login, error: ${error}`);
-          //notify.error("you can't touch this !!!");
-          setToken("Error in getting response from the server");
-        });
+    const { apiUrl, redirectPage } = paramsByType[clientModel.clientType];
+    try {
+      const response = await axios.post(apiUrl, clientModel);
+      const token = response.data;
+      Store.dispatch(loginClientString(token));
+      notify.success("successfully loged in");
+      navigate(redirectPage);
+    } catch (e) {
+      notify.error('Failed to log in');
     }
   }
+
+
+
   return (
     <div className="Login">
       <div className="login">
@@ -98,7 +73,7 @@ function Login(): JSX.Element {
             <PermIdentityIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
 
             <Select style={{ width: 250 }} {...register("clientType", { required: { value: true, message: "field is required" } })}>
-              <MenuItem value={"Administrator"} >Administrator</MenuItem>
+              <MenuItem value={"Administrator"}>Administrator</MenuItem>
               <MenuItem value={"Company"}>Company</MenuItem>
               <MenuItem value={"Customer"}>Customer</MenuItem>
             </Select>
@@ -110,15 +85,6 @@ function Login(): JSX.Element {
           <ButtonGroup variant="contained" fullWidth>
             <Button type="submit" color="primary">Send</Button>
           </ButtonGroup><br />
-
-
-          {/* <ButtonGroup variant="contained" fullWidth>
-          <button disabled={!isDirty || !isValid} name="submit" type="submit" className="btn btn-primary">Login</button>
-          //   <Button onClick={() => { navigate("/registration"); }} color="secondary">Sign up</Button>
-            // </ButtonGroup><br //
-                    <Typography variant="h6" className="HeadLine">Don't have account? Sign up right now</Typography><br />
-
-          */}
 
         </form>
       </div>

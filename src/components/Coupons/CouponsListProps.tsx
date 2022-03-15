@@ -1,3 +1,4 @@
+import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 interface CouponsListPropsProps {
@@ -36,6 +37,11 @@ function CouponsListProps(props: CouponsListPropsProps): JSX.Element {
             <h2 className="card_name">{props.title}</h2>
             <p className="card_price">{props.price + " ₪"}</p>
          <button className="card_btn" onClick={showCoupon}>More Info</button>
+
+       
+
+
+         
       </div>
       );
 }

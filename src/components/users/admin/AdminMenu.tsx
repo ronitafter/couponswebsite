@@ -18,19 +18,19 @@ function AdminMenu(): JSX.Element {
    // });
    return (
       <div className="adminMenu" id="adminMenu">
-        <ListGroup className='d'>
-         <ListGroup.Item><NavLink className="a" to="/addCompany">AddCompany</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/updateCompany">UpdateCompany</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/deleteCompany">DeleteCompany</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/getAllCompanies">Showall companies</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/getOneCompany">Showonecompany by id</NavLink></ListGroup.Item>
-        </ListGroup>
-        </div>
-        );
-      }
-      
-      
-      export default AdminMenu;
+         <ListGroup className='d'>
+            <ListGroup.Item><NavLink className="a" to="/admin/addCompany">AddCompany</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/admin/updateCompany">UpdateCompany</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/admin/deleteCompany">DeleteCompany</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/admin/getAllCompanies">Showall companies</NavLink></ListGroup.Item>
+            <ListGroup.Item><NavLink className="a" to="/admin/getOneCompany">Showonecompany by id</NavLink></ListGroup.Item>
+         </ListGroup>
+      </div>
+   );
+}
+
+
+export default AdminMenu;
       // <div className="adminMenu" id="adminMenu">
       //    <Typography variant="h4" className="HeadLine">Menu</Typography><br />
       //    <ul>

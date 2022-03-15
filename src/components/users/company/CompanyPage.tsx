@@ -1,5 +1,5 @@
 import React from 'react'
-import CouponsList from '../../props/CouponsList'
+import CouponsList from '../../Coupons/CouponsList'
 import CompanyMenu from './CompanyMenu'
 
 function CompanyPage() {

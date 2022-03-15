@@ -27,7 +27,6 @@ function UpdateCustomer(): JSX.Element {
 
   function updateNumber(args: SyntheticEvent) {
     id = (args.target as HTMLInputElement).value.toString();
-    console.log(id);
   }
 
   function searchCustomer() {
@@ -38,9 +37,7 @@ function UpdateCustomer(): JSX.Element {
         setData(new CustomerDetails());
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       setData(response.data)
-      console.log(response.data);
       notify.success("Customer was found !!!");
     }).catch(error => { console.log(error) });
 
@@ -53,8 +50,6 @@ function UpdateCustomer(): JSX.Element {
     console.log(Globals.urls.administrator + "updateCompany");
     axios.post<string>(Globals.urls.administrator + "updateCustomer", customerDetails1, { headers: { "authorization": token } })
       .then((response) => {
-        console.log(response.data);
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
         notify.success("successfully updated");
         navigate("/adminMenu");
       }).catch(error => {
@@ -73,7 +68,7 @@ function UpdateCustomer(): JSX.Element {
           <input type="number" placeholder="Please enter a customer ID" onChange={updateNumber} />
           <input type="button" value="Search" onClick={searchCustomer} /><br />
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <FormControl disabled variant="standard">   
+            <FormControl disabled variant="standard">
               <Input id="component-disabled" value={customerDetails.id}
                 {...register("id")} />
               <FormHelperText>ID</FormHelperText>

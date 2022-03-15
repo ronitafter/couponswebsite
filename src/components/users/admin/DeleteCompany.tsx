@@ -7,42 +7,55 @@ import { loginClientString } from '../../store/StoreState';
 import notify from '../../utils/Notify';
 
 
-  function DeleteCompany(): JSX.Element {
-    useEffect(() => {
+function DeleteCompany(): JSX.Element {
+  useEffect(() => {
 
-      if (Store.getState().StoreState.loginClient.userType != "Administrator") {
-        notify.error("you are not allowed to enter!")
-        navigate("/login");
-      }
-    });
-
-    let id: string = "";
-    const navigate = useNavigate();
-    let token: string = Store.getState().StoreState.loginClient.token;
-
-    function updateNumber(args: SyntheticEvent) {
-      id = (args.target as HTMLInputElement).value.toString();
-      console.log(id);
+    if (Store.getState().StoreState.loginClient.userType != "Administrator") {
+      notify.error("you are not allowed to enter!")
+      navigate("/login");
     }
-    function deleteCompany() {
-      axios.delete(Globals.urls.administrator + "deleteCompany/" + id, { headers: { "authorization": token } }).then((response) => {
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-        notify.success("successfully deleted");
-        navigate("/adminMenu")
-      }).catch(error => {
-        console.log(error);
-        notify.error("error while deleting a company");
-      });
+  });
 
-    }
+  let id: string = "";
+  const navigate = useNavigate();
+  let token: string = Store.getState().StoreState.loginClient.token;
 
-    return (
-      <div className="deleteCompany">
-        To delete company enter a company ID <br /><br />
-        <input type="number" placeholder="Please enter a company ID" onChange={updateNumber} />
-        <input type="button" value="Delete" onClick={deleteCompany} /><br />
-      </div>
-    );
+  function updateNumber(args: SyntheticEvent) {
+    id = (args.target as HTMLInputElement).value.toString();
+    console.log(id);
   }
+
+  async function deleteCompany() {
+    try {
+      await axios.delete(Globals.urls.administrator + "/company/" + id,
+        { headers: { "authorization": token } });
+      notify.success('Successfully deleted company');
+    } catch (e) {
+      notify.error('Error while deleting a company');
+    }
+  }
+
+  //DELETE THIS FUNCTION:
+
+  // function deleteCompany() {
+  //   axios.delete(Globals.urls.administrator + "deleteCompany/" + id, { headers: { "authorization": token } }).then((response) => {
+  //     Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
+  //     notify.success("successfully deleted");
+  //     navigate("/adminMenu")
+  //   }).catch(error => {
+  //     console.log(error);
+  //     notify.error("error while deleting a company");
+  //   });
+
+  // }
+
+  return (
+    <div className="deleteCompany">
+      To delete company enter a company ID <br /><br />
+      <input type="number" placeholder="Please enter a company ID" onChange={updateNumber} />
+      <input type="button" value="Delete" onClick={deleteCompany} /><br />
+    </div>
+  );
+}
 
 export default DeleteCompany;

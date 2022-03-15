@@ -20,27 +20,23 @@ function AddCustomer(): JSX.Element {
 
     if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
       notify.error("client not authorized")
-     navigate("/login");
+      navigate("/login");
     }
   });
-  const { register, handleSubmit, setError, formState: { errors } } = useForm<CustomerDetails>();
+  const { register, handleSubmit, reset: resetForm, formState: { errors } } = useForm<CustomerDetails>();
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
 
-  function send(customerDetails: CustomerDetails) {
-    console.log(customerDetails);
-    console.log(Globals.urls.administrator + "AddCustomer");
-    axios.post<string>(Globals.urls.administrator + "AddCustomer", customerDetails, { headers: { "authorization": token } })
-      .then((response) => {
-        console.log(response.data);
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-        notify.success("successfully added");
-        navigate("/AdminMenu");
-      }).catch(error => {
-
-        notify.error("error while adding a customer")
-      });
+  async function send(customerDetails: CustomerDetails) {
+    try {
+      await axios.post<string>(Globals.urls.administrator + "/customer", customerDetails, { headers: { "authorization": token } })
+      notify.success('Successfully added customer');
+      resetForm();
+    } catch (e) {
+      notify.error('Error while adding a customer');
+    }
   }
+
   return (
     <div className="addCustomer">
       <div className="add">
@@ -89,7 +85,7 @@ function AddCustomer(): JSX.Element {
           <span> {errors.password && <p>{errors.password.message}</p>}</span>
           <br />
           <br />
-          
+
           <ButtonGroup>
             {/*<ButtonGroup variant="contained" fullWidth>*/}
             <Button type="submit" color="primary">Send</Button>

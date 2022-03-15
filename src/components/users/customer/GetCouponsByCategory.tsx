@@ -9,20 +9,20 @@ import CouponModel from "../../models/CouponModel";
 import axios from "axios";
 import Globals from "../../store/Globals";
 import { loginClientString } from "../../store/StoreState";
-import CouponsListProps from "../../props/CouponsListProps";
+import CouponsListProps from "../../Coupons/CouponsListProps";
 import { Box, Typography } from "@mui/material";
 
 
 
   function GetCouponsByCategory(): JSX.Element {
     const navigate = useNavigate();
-    useEffect(() => {
+    // useEffect(() => {
 
-      if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
-        notify.error("you are not allowed to enter!")
-        navigate("/login");
-      }
-    },[]);
+    //   if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
+    //     notify.error("you are not allowed to enter!")
+    //     navigate("/login");
+    //   }
+    // },[navigate]);
 
     const [couponModel, setCouponModel] = useState([new CouponModel()]);
     const [value, setValue] = useState<String>();
@@ -56,12 +56,9 @@ import { Box, Typography } from "@mui/material";
             <CategoryIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <Select onChange={handleChange} style={{ width: 200 }} labelId="select-helper" id="select-helper">
               <MenuItem value={"Food"}>Food</MenuItem>
-              <MenuItem value={"Electronic"}>Electronic</MenuItem>
-              <MenuItem value={"House"}>House</MenuItem>
-              <MenuItem value={"Beauty"}>Beauty</MenuItem>
-              <MenuItem value={"Travel"}>Travel</MenuItem>
-              <MenuItem value={"Events"}>Events</MenuItem>
-              <MenuItem value={"Fashion"}>Fashion</MenuItem>
+              <MenuItem value={"Electricity"}>Electricity</MenuItem>
+              <MenuItem value={"Restaurant"}>Restaurant</MenuItem>
+              <MenuItem value={"Vacation"}>Vacation</MenuItem>
             </Select>
 
 

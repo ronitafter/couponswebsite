@@ -5,7 +5,6 @@ import Page404 from "../layout/page404/Page404";
 import Login from "../login/Login";
 import AddCompany from "../users/admin/AddCompany";
 import AddCustomer from "../users/admin/AddCustomer";
-import getAllCompanies from "../users/admin/GetAllCompanies";
 import GetOneCompany from "../users/admin/GetOneCompany";
 import GetOneCustomer from "../users/admin/GetOneCustomer";
 import UpdateCompany from "../users/admin/UpdateCompany";
@@ -34,15 +33,15 @@ import CompanyPage from "../users/company/CompanyPage";
 import CompanyMenu from "../users/company/CompanyMenu";
 import CustomerMenu from "../users/customer/CustomerMenu";
 import CustomerPage from "../users/customer/CustomerPage";
-import CouponsList from "../props/CouponsList";
-import {ROUTES} from './constants';
+import CouponsList from "../Coupons/CouponsList";
+import { ROUTES } from './constants';
 
 
 function Routing(): JSX.Element {
    return (
       <div className="Routing">
          <Routes>
-            
+
             {/* GENERAL*/}
             <Route path={ROUTES.HOME} element={<Home />} />
 
@@ -52,13 +51,13 @@ function Routing(): JSX.Element {
             <Route element={<Page404 />} /> {/* Last */}
             <Route element={<EmptyView msg={""} />} /> {/* Last */}
             {/*ADMIN*/}
-            <Route path="/AdmainPage" element={<AdmainPage />} />
+            <Route path="/AdminPage" element={<AdmainPage />} />
             <Route path="/AdminMenu" element={<AdminMenu />} />
             <Route path="/admin/AddCompany" element={<AddCompany />} />
             <Route path="/admin/UpdateCompany" element={<UpdateCompany />} />
             <Route path="/admin/GetOneCompany" element={<GetOneCompany />} />
             <Route path="/admin/DeleteCompany" element={<DeleteCompany />} />
-            <Route path="/admin/getAllCompanies" element={<GetAllCompanies />} />
+            <Route path="/admin/GetAllCompanies" element={<GetAllCompanies />} />
             <Route path="/admin/getOneCustomer/:customerId" element={<GetOneCustomer />} />
             <Route path="/admin/AddCustomer" element={<AddCustomer />} />
             <Route path="/admin/UpdateCustomer/:customerId" element={<UpdateCustomer />} />

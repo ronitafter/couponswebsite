@@ -10,7 +10,8 @@ function CouponAvatar(props: AvatarProps): JSX.Element {
    console.log(url);
    return (
       <div className="Avatar">
-         <img src={url} ></img>
+      <h3>testing</h3>
+         <img src={url} alt='hghg' ></img>
       </div>
    );
 }

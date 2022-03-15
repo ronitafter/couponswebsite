@@ -31,20 +31,18 @@ function UpdateCompany(): JSX.Element {
 
   function searchCompany() {
 
-    axios.get(Globals.urls.administrator + "oneCompany/" + id, { headers: { "authorization": token } }).then((response) => {
+    axios.get(Globals.urls.administrator + "/company/" + id, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
-        notify.error("company is not found !!!");
+        notify.error("company is not found");
         setData(new CompanyDetails());
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       setData(response.data)
-      console.log(response.data);
       notify.success("Company was found !!!");
     }).catch(error => { console.log(error) });
   }
 
-  function updateComp(companyDetails1: CompanyDetails) {
+  function updateComapny(companyDetails1: CompanyDetails) {
     if (companyDetails1.id == null || companyDetails1.name == "") {
       notify.error("company wasn't choosen")
       return;
@@ -52,12 +50,9 @@ function UpdateCompany(): JSX.Element {
     companyDetails1.id = companyDetails.id;
     companyDetails1.name = companyDetails.name;
     companyDetails1.coupons = companyDetails.coupons;
-    console.log(companyDetails1);
-    console.log(Globals.urls.administrator + "updateCompany");
+
     axios.post<string>(Globals.urls.administrator + "updateCompany", companyDetails1, { headers: { "authorization": token } })
       .then((response) => {
-        console.log(response.data);
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
         notify.success("successfully updated");
         navigate("/adminMenu");
       }).catch(error => {
@@ -72,7 +67,7 @@ function UpdateCompany(): JSX.Element {
 
     <div className="updateCompany">
       <div className="add">
-        <form onSubmit={handleSubmit(updateComp)}>
+        <form onSubmit={handleSubmit(updateComapny)}>
           <Typography variant="h4" className="HeadLine">Enter a Company ID to change its info</Typography><br />
           <input type="number" placeholder="Please enter a company ID" onChange={updateNumber} />
           <input type="button" value="Search" onClick={searchCompany} /><br />

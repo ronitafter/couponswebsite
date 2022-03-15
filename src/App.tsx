@@ -15,10 +15,6 @@ function App() {
         <Main />
       </div>
       <Footer />
-
-      {/* <h1>Moshe</h1> */}
-      {/* <Page404/>
-      <Page404 msg='Ofir Not Found......'/> */}
     </div>
   );
 }

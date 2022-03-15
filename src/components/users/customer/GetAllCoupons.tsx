@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CouponModel from '../../models/CouponModel';
-import CouponsListProps from '../../props/CouponsListProps';
+import CouponsListProps from '../../Coupons/CouponsListProps';
 import Globals from '../../store/Globals';
 import Store from '../../store/Store';
 import { loginClientString } from '../../store/StoreState';
@@ -15,7 +15,7 @@ import notify from '../../utils/Notify';
     const navigate = useNavigate();
     let token: string = Store.getState().StoreState.loginClient.token;
     useEffect(() => {
-      if (Store.getState().StoreState.loginClient.clientType != "Customer") {
+      if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
         notify.error("you are not allowed to enter!")
         navigate("/login");
       }
@@ -24,7 +24,7 @@ import notify from '../../utils/Notify';
         console.log(response.data);
         setData(response.data)
       }).catch(error => { console.log(error) });
-    }, []);
+    }, [navigate, token]);
     return (
       <div className="showMyCoupons">
         {couponData.map(item => <CouponsListProps

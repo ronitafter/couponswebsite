@@ -13,14 +13,13 @@ function GetAllCompanies(): JSX.Element {
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
   useEffect(() => {
-    if (Store.getState().StoreState.loginClient.userType != "Administrator") {
+    if (Store.getState().StoreState.loginClient.userType !== "Administrator") {
       notify.error("you are not allowed to enter!")
       navigate("/login");
     }
     axios.get(Globals.urls.administrator + "allCompanies", { headers: { "Authorization": token } })
       .then((response) => {
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-        console.log(response.data);
+        // Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
         setData(response.data)
       }).catch(error => { console.log(error) });
   }, []);

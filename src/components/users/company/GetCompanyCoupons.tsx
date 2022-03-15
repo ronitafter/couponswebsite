@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CouponModel from '../../models/CouponModel';
-import CouponsListProps from '../../props/CouponsListProps';
+import CouponsListProps from '../../Coupons/CouponsListProps';
 import Globals from '../../store/Globals';
 import Store from '../../store/Store';
 import { loginClientString } from '../../store/StoreState';
@@ -13,7 +13,7 @@ function GetCompanyCoupons(): JSX.Element {
     const navigate = useNavigate();
     let token: string = Store.getState().StoreState.loginClient.token;
     useEffect(() => {
-      if (Store.getState().StoreState.loginClient.clientType != "Company") {
+      if (Store.getState().StoreState.loginClient.clientType !== "Company") {
         notify.error("you are not allowed to enter!")
         navigate("/login");
       }

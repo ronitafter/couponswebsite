@@ -1,4 +1,5 @@
 import { Notyf } from "notyf";
+import 'notyf/notyf.min.css';
 export enum SccMsg {
    ADDED_COUPON = 'Added coupon successfully',
    UPDATED_COUPON = 'Updated coupon successfully',

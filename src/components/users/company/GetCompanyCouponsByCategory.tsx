@@ -9,7 +9,7 @@ import CouponModel from "../../models/CouponModel";
 import axios from "axios";
 import Globals from "../../store/Globals";
 import { loginClientString } from "../../store/StoreState";
-import CouponsListProps from "../../props/CouponsListProps";
+import CouponsListProps from "../../Coupons/CouponsListProps";
 import { Box, Typography } from "@mui/material";
 
 

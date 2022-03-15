@@ -1,8 +1,4 @@
 import ClientModel from "../models/ClientModel";
-import jwt_decode from "jwt-decode";
-import { stringify } from "querystring";
-import jwtDecode from "jwt-decode";
-import { FormatListBulletedOutlined } from "@mui/icons-material";
 import OnlineClient from "../models/ClientDetails";
 
 //
@@ -74,10 +70,10 @@ export function storeReducer(currentState: StoreState = new StoreState(), action
 
          newState.loginClient.token = action.payload;
          localStorage.setItem("token", newState.loginClient.token);
-         newState.loginClient.clientType = (JSON.parse(JSON.stringify(jwt_decode(newState.loginClient.token)))).clientType;
+
          localStorage.setItem("userType", newState.loginClient.userType);
          if (newState.loginClient.clientType !== "Administrator") {
-            newState.loginClient.clientId = (JSON.parse(JSON.stringify(jwt_decode(newState.loginClient.token)))).clientId;
+
             localStorage.setItem("id", newState.loginClient.clientId);
          }
          newState.isLoggein = true;

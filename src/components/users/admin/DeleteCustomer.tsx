@@ -19,22 +19,19 @@ function DeleteCustomer(): JSX.Element {
   let id: string = "";
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
-
   function updateNumber(args: SyntheticEvent) {
     id = (args.target as HTMLInputElement).value.toString();
     console.log(id);
   }
 
-  function deleteCustomer() {
-    axios.delete(Globals.urls.administrator + "deleteCustomer/" + id, { headers: { "authorization": token } }).then((response) => {
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-      notify.success("successfully deleted");
-      navigate("/adminMenu");
-    }).catch(error => {
-      console.log(error);
-      notify.error("error while deleting a customer");
-    });
-
+  async function deleteCustomer() {
+    try {
+      await axios.delete(Globals.urls.administrator + "/customer/" + id,
+        { headers: { "authorization": token } })
+      notify.success('Successfully deleted customer');
+    } catch (e) {
+      notify.error('Error while deleting a customer');
+    }
   }
   return (
     <div className="deleteCustomer">
