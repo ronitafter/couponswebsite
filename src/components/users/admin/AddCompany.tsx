@@ -18,13 +18,12 @@ import CompanyDetails from "../../models/CompanyDetails";
 
 
 function AddCompany(): JSX.Element {
-  useEffect(() => {
-
-    if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-  });
+  // useEffect(() => {
+  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  // });
 
   const { register, handleSubmit, reset: resetForm, formState: { errors } } = useForm<CompanyDetails>();
   const navigate = useNavigate();
