@@ -31,7 +31,7 @@ function UpdateCustomer(): JSX.Element {
 
   function searchCustomer() {
 
-    axios.get(Globals.urls.administrator + "oneCustomer/" + id, { headers: { "authorization": token } }).then((response) => {
+    axios.get(Globals.urls.administrator + "customer" + id, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
         notify.error("Customer is not found !!!");
         setData(new CustomerDetails());

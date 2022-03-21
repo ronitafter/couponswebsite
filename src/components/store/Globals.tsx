@@ -3,11 +3,11 @@ import axios from "axios";
 class Globals { }
 class DevelopmentGlobals extends Globals {
    public urls = {
-      administrator: "/admin",
-      company: "/company",
-      customer: "/customer",
-      images: "/images",
-      login: "/admin/login",
+      administrator: "/admin/",
+      company: "/company/",
+      customer: "/customer/",
+      images: "/images/",
+      login: "/admin/login/",
    }
 }
 class ProductionGlobals extends Globals {
@@ -15,7 +15,7 @@ class ProductionGlobals extends Globals {
       administrator: "/admin/",
       company: "/company/",
       customer: "/customer/",
-      images: "/images",
+      images: "/images/",
       login: "/admin/login",
       general: "/"
 

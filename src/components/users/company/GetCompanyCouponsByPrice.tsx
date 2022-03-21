@@ -33,14 +33,14 @@ function GetCompanyCouponsByPrice(): JSX.Element {
 
 
   function findCouponsByCategory() {
-    axios.get(Globals.urls.company + "coupons/" + price, { headers: { "authorization": token } }).then((response) => {
+    axios.get(Globals.urls.company + "coupon" + price, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
         notify.error("Coupons are not found !!!");
         setCoupons([new CouponModel()]);
         return;
       }
       Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-      const {id, companyId, categories, title, description, start_date, end_date, amount, price, image} = response.data.couponModel;
+      const { id, companyId, categories, title, description, start_date, end_date, amount, price, image } = response.data.couponModel;
       setCoupons([new CouponModel(response.data.couponModel)]);
       console.log(response.data.couponModel);
       notify.success("Coupons were found !!!");

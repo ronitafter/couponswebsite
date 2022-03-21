@@ -17,7 +17,7 @@ function GetAllCompanies(): JSX.Element {
       notify.error("you are not allowed to enter!")
       navigate("/login");
     }
-    axios.get(Globals.urls.administrator + "allCompanies", { headers: { "Authorization": token } })
+    axios.get(Globals.urls.administrator + "companies", { headers: { "authorization": token } })
       .then((response) => {
         // Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
         setData(response.data)

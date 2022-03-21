@@ -27,28 +27,13 @@ function DeleteCompany(): JSX.Element {
 
   async function deleteCompany() {
     try {
-      await axios.delete(Globals.urls.administrator + "/company/" + id,
+      await axios.delete(Globals.urls.administrator + "company" + id,
         { headers: { "authorization": token } });
       notify.success('Successfully deleted company');
     } catch (e) {
       notify.error('Error while deleting a company');
     }
   }
-
-  //DELETE THIS FUNCTION:
-
-  // function deleteCompany() {
-  //   axios.delete(Globals.urls.administrator + "deleteCompany/" + id, { headers: { "authorization": token } }).then((response) => {
-  //     Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-  //     notify.success("successfully deleted");
-  //     navigate("/adminMenu")
-  //   }).catch(error => {
-  //     console.log(error);
-  //     notify.error("error while deleting a company");
-  //   });
-
-  // }
-
   return (
     <div className="deleteCompany">
       To delete company enter a company ID <br /><br />

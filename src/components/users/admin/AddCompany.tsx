@@ -32,7 +32,7 @@ function AddCompany(): JSX.Element {
 
   async function send(companyDetails: CompanyDetails) {
     try {
-      await axios.post<string>(Globals.urls.administrator + "/company", companyDetails, { headers: { "authorization": token } })
+      await axios.post<string>(Globals.urls.administrator + "company", companyDetails, { headers: { "authorization": token } })
       notify.success('Successfully added company');
       resetForm();
     } catch (e) {

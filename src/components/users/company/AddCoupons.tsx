@@ -34,8 +34,8 @@ function AddCoupon(): JSX.Element {
   function send(couponModel: CouponModel) {
     couponModel.companyId = Number(Store.getState().StoreState.loginClient.userId);
     console.log(couponModel);
-    console.log(Globals.urls.company + "addCoupon");
-    axios.post<string>(Globals.urls.company + "addCoupon", couponModel, { headers: { "authorization": token } })
+    console.log(Globals.urls.company + "coupon");
+    axios.post<string>(Globals.urls.company + "coupon", couponModel, { headers: { "authorization": token } })
       .then((response) => {
         console.log(response.data);
         Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));

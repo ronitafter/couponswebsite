@@ -45,8 +45,8 @@ function UpdateCoupon(): JSX.Element {
       return;
     }
     console.log(couponModel1);
-    console.log(globals.urls.company + "updateCoupon");
-    axios.post<string>(globals.urls.company + "updateCoupon", couponModel1, { headers: { "Authorization": token } }).then((response) => {
+    console.log(globals.urls.company + "coupon");
+    axios.post<string>(globals.urls.company + "coupon", couponModel1, { headers: { "Authorization": token } }).then((response) => {
       Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       console.log(response.data);
       notify.success("successfully updated");

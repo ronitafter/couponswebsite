@@ -12,76 +12,71 @@ import { loginClientString } from "../../store/StoreState";
 import CouponsListProps from "../../Coupons/CouponsListProps";
 import { Box, Typography } from "@mui/material";
 
+function GetCouponsByCategory(): JSX.Element {
+  const navigate = useNavigate();
+  useEffect(() => {
 
-
-  function GetCouponsByCategory(): JSX.Element {
-    const navigate = useNavigate();
-    // useEffect(() => {
-
-    //   if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
-    //     notify.error("you are not allowed to enter!")
-    //     navigate("/login");
-    //   }
-    // },[navigate]);
-
-    const [couponModel, setCouponModel] = useState([new CouponModel()]);
-    const [value, setValue] = useState<String>();
-    let token: string = Store.getState().StoreState.loginClient.token;
-
-    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => { const values = event.target.value; setValue(values as string); };
-
-
-
-
-    function findCouponsByCategory() {
-      axios.get(Globals.urls.customer + "findByCategories/" + value, { headers: { "authorization": token } }).then((response) => {
-        if (response.data.length < 1) {
-          notify.error("Coupons are not found !!!");
-          setCouponModel([new CouponModel()]);
-          return;
-        }
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-        setCouponModel(response.data)
-        console.log(response.data);
-        notify.success("Coupons were found !!!");
-      }).catch(error => { console.log(error) });
+    if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
+      notify.error("you are not allowed to enter!")
+      navigate("/login");
     }
+  }, [navigate]);
 
-    return (
-      <div className="couponsByCategory">
-        <div className="add">
+  const [couponModel, setCouponModel] = useState([new CouponModel()]);
+  const [value, setValue] = useState<String>();
+  let token: string = Store.getState().StoreState.loginClient.token;
 
-          <Typography variant="h4" className="HeadLine">Choose category</Typography><br />
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <CategoryIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <Select onChange={handleChange} style={{ width: 200 }} labelId="select-helper" id="select-helper">
-              <MenuItem value={"Food"}>Food</MenuItem>
-              <MenuItem value={"Electricity"}>Electricity</MenuItem>
-              <MenuItem value={"Restaurant"}>Restaurant</MenuItem>
-              <MenuItem value={"Vacation"}>Vacation</MenuItem>
-            </Select>
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => { const values = event.target.value; setValue(values as string); };
 
-
-
-            <input type="button" value="Find" onClick={findCouponsByCategory} /><br />
-          </Box>
-          <br /> <br />
-
-          {couponModel.map(item => <CouponsListProps
-            image={item.image}
-            title={item.title}
-            price={item.price} id={0}
-            companyId={item.companyId}
-            categories={item.categories}
-            description={item.description}
-            start_date={item.start_date}
-            end_date={item.end_date}
-            amount={item.amount}
-          />
-          )}
-        </div>
-      </div>
-    );
+  function findCouponsByCategory() {
+    axios.get(Globals.urls.customer + "coupon/category" + value, { headers: { "authorization": token } }).then((response) => {
+      if (response.data.length < 1) {
+        notify.error("Coupons are not found !!!");
+        setCouponModel([new CouponModel()]);
+        return;
+      }
+      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
+      setCouponModel(response.data)
+      console.log(response.data);
+      notify.success("Coupons were found !!!");
+    }).catch(error => { console.log(error) });
   }
 
-  export default GetCouponsByCategory;
+  return (
+    <div className="couponsByCategory">
+      <div className="add">
+
+        <Typography variant="h4" className="HeadLine">Choose category</Typography><br />
+        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <CategoryIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+          <Select onChange={handleChange} style={{ width: 200 }} labelId="select-helper" id="select-helper">
+            <MenuItem value={"Food"}>Food</MenuItem>
+            <MenuItem value={"Electricity"}>Electricity</MenuItem>
+            <MenuItem value={"Restaurant"}>Restaurant</MenuItem>
+            <MenuItem value={"Vacation"}>Vacation</MenuItem>
+          </Select>
+
+
+
+          <input type="button" value="Find" onClick={findCouponsByCategory} /><br />
+        </Box>
+        <br /> <br />
+
+        {couponModel.map(item => <CouponsListProps
+          image={item.image}
+          title={item.title}
+          price={item.price} id={0}
+          companyId={item.companyId}
+          categories={item.categories}
+          description={item.description}
+          start_date={item.start_date}
+          end_date={item.end_date}
+          amount={item.amount}
+        />
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default GetCouponsByCategory;

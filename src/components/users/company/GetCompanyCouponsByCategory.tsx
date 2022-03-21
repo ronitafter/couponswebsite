@@ -34,7 +34,7 @@ function GetCompanyCouponsByCategory(): JSX.Element {
 
 
   function findCouponsByCategory() {
-    axios.get(Globals.urls.company + "findByCategories/" + value, { headers: { "authorization": token } }).then((response) => {
+    axios.get(Globals.urls.company + "coupon/category" + value, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
         notify.error("Coupons are not found !!!");
         setCouponModel([new CouponModel()]);

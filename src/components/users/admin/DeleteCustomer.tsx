@@ -26,7 +26,7 @@ function DeleteCustomer(): JSX.Element {
 
   async function deleteCustomer() {
     try {
-      await axios.delete(Globals.urls.administrator + "/customer/" + id,
+      await axios.delete(Globals.urls.administrator + "customer" + id,
         { headers: { "authorization": token } })
       notify.success('Successfully deleted customer');
     } catch (e) {

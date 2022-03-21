@@ -31,7 +31,7 @@ function UpdateCompany(): JSX.Element {
 
   function searchCompany() {
 
-    axios.get(Globals.urls.administrator + "/company/" + id, { headers: { "authorization": token } }).then((response) => {
+    axios.get(Globals.urls.administrator + "company" + id, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
         notify.error("company is not found");
         setData(new CompanyDetails());

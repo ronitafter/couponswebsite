@@ -29,7 +29,7 @@ function AddCustomer(): JSX.Element {
 
   async function send(customerDetails: CustomerDetails) {
     try {
-      await axios.post<string>(Globals.urls.administrator + "/customer", customerDetails, { headers: { "authorization": token } })
+      await axios.post<string>(Globals.urls.administrator + "customer", customerDetails, { headers: { "authorization": token } })
       notify.success('Successfully added customer');
       resetForm();
     } catch (e) {
