@@ -9,13 +9,13 @@ import notify from "../../utils/Notify";
 
 
 function DeleteCustomer(): JSX.Element {
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.userType != "Administrator") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-  });
+  //   if (Store.getState().StoreState.loginClient.userType != "Administrator") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  // });
   let id: string = "";
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;

@@ -7,6 +7,7 @@ import Globals from '../../store/Globals';
 import Store from '../../store/Store';
 import { loginClientString } from '../../store/StoreState';
 import notify from '../../utils/Notify';
+import { Card } from 'react-bootstrap';
 
 
 

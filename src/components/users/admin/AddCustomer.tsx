@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
 import { loginClientString } from "../../store/StoreState";
@@ -16,13 +16,13 @@ import CustomerDetails from "../../models/CustomerDetails";
 import "./AddCustomer.css";
 
 function AddCustomer(): JSX.Element {
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-      notify.error("client not authorized")
-      navigate("/login");
-    }
-  });
+  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
+  //     notify.error("client not authorized")
+  //     navigate("/login");
+  //   }
+  // });
   const { register, handleSubmit, reset: resetForm, formState: { errors } } = useForm<CustomerDetails>();
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
@@ -92,6 +92,12 @@ function AddCustomer(): JSX.Element {
           </ButtonGroup>
         </form>
       </div>
+      <Button variant="contained">
+        <Link to="/AdminPage">Go To AdminPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

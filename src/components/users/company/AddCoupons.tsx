@@ -9,7 +9,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CouponModel from "../../models/CouponModel";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
@@ -18,37 +18,46 @@ import notify from "../../utils/Notify";
 
 
 function AddCoupon(): JSX.Element {
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType != "Company") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-  });
+  //   if (Store.getState().StoreState.loginClient.clientType != "Company") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  // });
 
   const { register, handleSubmit, setError, formState: { errors } } = useForm<CouponModel>();
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
 
-
-  function send(couponModel: CouponModel) {
-    couponModel.companyId = Number(Store.getState().StoreState.loginClient.userId);
-    console.log(couponModel);
-    console.log(Globals.urls.company + "coupon");
-    axios.post<string>(Globals.urls.company + "coupon", couponModel, { headers: { "authorization": token } })
-      .then((response) => {
-        console.log(response.data);
-        Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-        notify.success("successfully added");
-        navigate("/companyMenu");
-      }).catch(error => {
-        notify.error("error while adding a company")
-      });
+  async function send(couponModel: CouponModel) {
+    try {
+      couponModel.companyId = Number(Store.getState().StoreState.loginClient.userId);
+      await axios.post<string>(Globals.urls.company + "coupon", couponModel,
+        { headers: { "authorization": token } })
+      notify.success('Successfully added coupon');
+    } catch (e) {
+      notify.error('Error while adding a coupon');
+    }
   }
+
+  // function send(couponModel: CouponModel) {
+  //   couponModel.companyId = Number(Store.getState().StoreState.loginClient.userId);
+  //   console.log(couponModel);
+  //   console.log(Globals.urls.company + "coupon");
+  //   axios.post<string>(Globals.urls.company + "coupon", couponModel, { headers: { "authorization": token } })
+  //     .then((response) => {
+  //       // Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
+  //       // notify.success("successfully added");
+  //       navigate("/companyMenu");
+  //     }).catch(error => {
+  //       notify.error("error while adding a company")
+  //     });
+  // }
 
   return (
     <div className="addCoupon">
-      <div className="add">
+      <div className="add Box">
         <form onSubmit={handleSubmit(send)}>
           <Typography variant="h4" className="HeadLine">Add new Coupon</Typography><br />
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -151,6 +160,12 @@ function AddCoupon(): JSX.Element {
           </ButtonGroup>
         </form>
       </div>
+      <Button variant="contained">
+        <Link to="/CompanyPage">Go To Company Page</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

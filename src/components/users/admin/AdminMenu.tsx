@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Button, ListGroup } from "react-bootstrap";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Store from "../../store/Store";
 import notify from "../../utils/Notify";
 
@@ -17,15 +17,43 @@ function AdminMenu(): JSX.Element {
    //    }
    // });
    return (
-      <div className="adminMenu" id="adminMenu">
-         <ListGroup className='d'>
-            <ListGroup.Item><NavLink className="a" to="/admin/addCompany">AddCompany</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/admin/updateCompany">UpdateCompany</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/admin/deleteCompany">DeleteCompany</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/admin/getAllCompanies">Showall companies</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/admin/getOneCompany">Showonecompany by id</NavLink></ListGroup.Item>
-         </ListGroup>
+      <div>
+         <div className="adminMenu Box" id="adminMenu">
+            <ListGroup>
+               <Button variant="contained Box2">
+                  <Link to="/admin/addCompany">add Company</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/updateCompany">Update Company</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/deleteCompany">Delete Company</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/getAllCompanies">Companies</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/getOneCompany">Search companies</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/GetAllCoupons">GetAllCoupons</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/AddCustomer">AddCustomer</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/deleteCustomer">DeleteCustomer</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/UpdateCustomer">UpdateCustomer</Link>
+               </Button>
+            </ListGroup>
+         </div>
+         <Button variant="contained">
+            <Link to="/Main"> Go To Home Page</Link>
+         </Button>
       </div>
+
    );
 }
 

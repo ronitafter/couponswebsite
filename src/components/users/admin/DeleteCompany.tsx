@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import Globals from '../../store/Globals';
 import Store from '../../store/Store';
 import { loginClientString } from '../../store/StoreState';
@@ -35,10 +36,19 @@ function DeleteCompany(): JSX.Element {
     }
   }
   return (
-    <div className="deleteCompany">
-      To delete company enter a company ID <br /><br />
-      <input type="number" placeholder="Please enter a company ID" onChange={updateNumber} />
-      <input type="button" value="Delete" onClick={deleteCompany} /><br />
+    <div>
+
+      <div className="deleteCompany Box">
+        To delete company enter a company ID <br /><br />
+        <input type="number" placeholder="Please enter a company ID" onChange={updateNumber} />
+        <input type="button" value="Delete" onClick={deleteCompany} /><br />
+      </div>
+      <Button variant="contained">
+        <Link to="/AdminPage">Go To AdminPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

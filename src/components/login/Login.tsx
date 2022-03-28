@@ -44,7 +44,7 @@ function Login(): JSX.Element {
 
   return (
     <div className="Login">
-      <div className="login">
+      <div className="login Box">
         <form onSubmit={handleSubmit(send)}>
           <Typography variant="h4" className="HeadLine">Log in to your Coupons account</Typography><br />
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -52,7 +52,7 @@ function Login(): JSX.Element {
             <TextField id="input-with-sx" label="Email" variant="standard"
               {...register("email", {
                 required: { value: true, message: "field is required" }
-                , minLength: { value: 5, message: "minimum length must be 5" }
+                , minLength: { value: 3, message: "minimum length must be 3 " }
               })} />
           </Box>
           <span> {errors.email && <p>{errors.email.message}</p>}</span>

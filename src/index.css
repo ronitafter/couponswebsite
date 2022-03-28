@@ -5,26 +5,36 @@ body,
   padding: 0;
   margin: 1;
   text-align: center;
+  font-size: large;
   justify-content: center;
   font-style: bold;
-  color: darkcyan;
-  background-image: linear-gradient(45deg, rgb(250, 250, 250), white);
-  --bs-body-line-height: 4 !important;
+  color: rgb(255, 255, 255);
+  background-image: linear-gradient(
+    45deg,
+    rgb(250, 250, 250),
+    rgb(246, 244, 244)
+  );
 }
 
 .Main {
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 80vh;
   overflow-y: auto;
-  background-color: #d8d2cb;
+  background-color: #ffffff;
 }
 
 .Footer {
   grid-column: span 6;
-  background-color: rgb(37, 49, 59);
+  /* background-color: rgb(0, 0, 0); */
   flex-shrink: 0;
+  line-height: 4 !important;
+  color: #ffffff !important;
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0.5px 0.5px black;
 }
 
 .social {
@@ -35,31 +45,58 @@ body,
   width: 100vh;
   height: 100%;
   margin: 0px;
-  background-color: rgb(195, 143, 255);
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
 .Box {
+  padding-top: 20px !important;
   text-align: center;
-  border: 1px dashed black;
-  padding: 0 10px;
+  padding: 30px 30px;
   margin: 10px;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px;
+  padding-top: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px;
+  /* background-color: #dddddd; */
+  /* color: #49474a !important; */
+  background-color: rgb(241 241 241);
+  color: #49474a;
+
+  line-height: 4 !important;
+  font-weight: 500;
 }
 
-.smallBox {
+.Box2 {
   text-align: center;
-  padding: 10px 10px;
-  margin: 10px;
-  border-radius: 10px;
-  margin-left: 5%;
-  margin-top: 5%;
-  top: 100;
-  width: 400px;
-  display: inline-block;
+  margin: 5px;
+  padding: 0 90px !important;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px;
+  /* background-color: #f5c0c0 !important;
+   */
+  background-color: rgb(241 241 241);
+  color: #49474a;
+  line-height: 2 !important;
+  display: grid !important;
+}
+
+.Box3 {
+  background-color: rgb(241 241 241) !important;
+  line-height: 2 !important;
+  padding: 30px;
+}
+
+.Box5 {
+  background-color: rgb(241 241 241);
+  line-height: 1.5 !important;
+  padding: 20px;
+}
+
+.Box4 {
+  background-color: rgb(241 241 241);
+  padding: 50px;
+  padding-right: 70px;
 }
 
 .login,
@@ -67,36 +104,7 @@ body,
   justify-content: center !important;
   text-align: center !important;
   padding: 5px 5px !important;
-  width: 500px !important;
   line-height: 1 !important;
-  margin-left: 0% !important;
-}
-
-.carBox {
-  text-align: center;
-  border: 1px dashed black;
-  padding: 10px 10px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px;
-  width: 135px;
-  background-color: cornsilk;
-}
-
-.couponBox {
-  width: 200px;
-  height: 240px;
-  background-color: #122936;
-  color: #fff;
-  border-radius: 20px;
-  font-weight: 500;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: 10px;
 }
 
 .couponBox::before {
@@ -104,29 +112,13 @@ body,
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #758999;
-  transform: skewY(345deg);
   position: absolute;
   top: -50%;
-  transition: 0.5s;
 }
 
 .couponBox:hover::before {
   transform: skewY(390deg);
   top: -70%;
-}
-
-.cardImg {
-  margin-top: 30px;
-  width: 50%;
-  height: 50%;
-  position: relative;
-  transition: 0.5s;
-}
-
-.couponBox:hover .cardImg {
-  width: 30%;
-  height: 30%;
 }
 
 .card_name {
@@ -165,4 +157,133 @@ body,
 
 .couponBox:hover .card_btn {
   top: 0;
+}
+
+.navbar-text {
+  margin-left: 0px;
+  /* margin-top: 5px !important; */
+  margin-right: 400px;
+  text-align: end !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  text-shadow: 0.5px 0.5px black;
+}
+
+.navbar-dark .navbar-brand {
+  /* color: #d5a6ff !important; */
+  font-size: 30px;
+  /* font-family: cursive; */
+  font-weight: bold;
+  margin-right: 710px;
+  margin-left: 20px;
+  margin-bottom: 0%;
+  line-height: 2;
+  color: #ffffff !important;
+  text-shadow: 2px 1px black;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0.5px 0.5px black;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #85b2ed !important;
+  font-style: italic;
+}
+
+*,
+::after,
+::before {
+  box-sizing: content-box !important;
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1200px !important;
+  }
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* font-size: 16px !important; */
+  font-size: medium !important;
+  margin-top: 1px;
+  margin-bottom: 0.5rem;
+  line-height: 0.001;
+  /* padding-top: 1px; */
+  font-family: sans-serif;
+  /* font-style: italic !important; */
+  text-align: center !important;
+}
+
+/* .Button {
+  text-align: center;
+  padding: 0 80px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px;
+  background-color: #49474a;
+  color: #dddddd !important;
+  line-height: 4 !important;
+  font-weight: 500;
+} */
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  margin: 30px !important;
+}
+
+a:link {
+  color: #000000 !important;
+}
+
+a:hover {
+  color: #85b2ed !important;
+}
+
+.NAV,
+.Footer {
+  /* background-color: red !important; */
+  background-color: #000000;
+}
+
+.about {
+  display: flex;
+  width: 70vh;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px;
+  /* background-color: #dddddd; */
+  /* color: #49474a !important; */
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  text-align: "justify";
+  flex: 1;
+  justify-content: "center";
+  align-items: "center";
+  line-height: "100px";
+  /* line-height: 2; */
+}
+
+.btn-primary {
+  color: #fff;
+  margin-top: 30px;
 }

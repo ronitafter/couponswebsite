@@ -4,13 +4,13 @@ import CategoryIcon from '@mui/icons-material/Category';
 import { useEffect, useState } from "react";
 import notify from "../../utils/Notify";
 import Store from "../../store/Store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CouponModel from "../../models/CouponModel";
 import axios from "axios";
 import Globals from "../../store/Globals";
 import { loginClientString } from "../../store/StoreState";
 import CouponsListProps from "../../Coupons/CouponsListProps";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 
 
@@ -83,6 +83,12 @@ function GetCompanyCouponsByCategory(): JSX.Element {
         />
         )}
       </div>
+      <Button variant="contained">
+        <Link to="/CompanyPage">Go To CompanyPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

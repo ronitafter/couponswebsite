@@ -28,7 +28,7 @@
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-async-hook": "^4.0.0",
-    "react-bootstrap": "^2.1.2",
+    "react-bootstrap": "^2.2.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.27.0",
     "react-i18next": "^11.15.5",
@@ -39,7 +39,6 @@
     "react-yup": "^1.23.0",
     "redirect": "^0.2.0",
     "redux": "^4.1.2",
-    "typescript": "^4.5.5",
     "use-history": "^1.4.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11",
@@ -68,5 +67,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^3.6.5"
   }
 }

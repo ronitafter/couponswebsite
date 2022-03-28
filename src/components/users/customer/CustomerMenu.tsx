@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Button, ListGroup } from "react-bootstrap";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Store from "../../store/Store";
 import notify from "../../utils/Notify";
 
@@ -17,16 +17,32 @@ function CustomerMenu(): JSX.Element {
    //    }
    // });
    return (
-      <div className="customerMenu" id="customerMenu">
-         <Typography variant="h4" className="HeadLine"></Typography><br />
-         <ListGroup className='d'>
-            <ListGroup.Item><NavLink className="a" to="/customer/PurchaseCoupon">PurchaseCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/customer/GetCouponsByPrice">GetCouponsByPrice</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/customer/GetCustomerDetails">GetCustomerDetails</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/customer/GetCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/customer/GetAllCoupons">GetAllCoupons</NavLink></ListGroup.Item>
-         </ListGroup>
+      <div>
+
+         <div className="customerMenu Box" id="customerMenu">
+            <ListGroup>
+               <Button variant="contained Box2">
+                  <Link to="/customer/PurchaseCoupon">Purchase Coupons</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/customer/GetCouponsByPrice">Coupon Prices</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/customer/GetCustomerDetails">My Info</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="customer/GetCouponsByCategory">Coupons Category</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/customer/GetAllCoupons"> My Coupons</Link>
+               </Button>
+            </ListGroup>
+         </div>
+         <Button variant="contained">
+            <Link to="/Main"> Go To Home Page</Link>
+         </Button>
       </div>
+
    );
 }
 

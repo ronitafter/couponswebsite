@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Button, ListGroup } from "react-bootstrap";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Store from "../../store/Store";
 import notify from "../../utils/Notify";
 
@@ -17,20 +17,34 @@ function CompanyMenu(): JSX.Element {
    //    }
    // });
    return (
-      <div className="companyMenu" id="companyMenu">
-         <Typography variant="h4" className="HeadLine"></Typography><br />    
-         <ListGroup className='d'>
-            <ListGroup.Item><NavLink className="a" to="company/addCoupon">addCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/deleteCoupon">deleteCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/company/getCompanyCoupons">getCompanyCoupons</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/company/UpdateCoupon">UpdateCoupon</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/company/GetCompanyCouponsByCategory">GetCompanyCouponsByCategory</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/company/findCouponsByCategory">findCouponsByCategory</NavLink></ListGroup.Item>
-            <ListGroup.Item><NavLink className="a" to="/company/GetCompanyDetails">GetCompanyDetails</NavLink></ListGroup.Item>
-         </ListGroup>
+      <div>
+         <div className="companyMenu Box" id="companyMenu">
+            <ListGroup>
+               <Button variant="contained Box2">
+                  <Link to="/company/addCoupons">add Coupons</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/company/deleteCoupon Box2">delete Coupons</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/company/getCompanyCoupons">My Coupons</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/company/UpdateCoupon">Update Coupons</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/company/GetCompanyCouponsByCategory">Coupons Categorirs</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/company/GetCompanyDetails">Company Info</Link>
+               </Button>
+            </ListGroup>
+         </div>
+         <Button variant="contained">
+            <Link to="/Main"> Go To Home Page</Link>
+         </Button>
       </div>
    );
 }
-
 
 export default CompanyMenu;

@@ -2,7 +2,6 @@ import { Navigate, Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import Home from "../layout/home/Home";
 import Page404 from "../layout/page404/Page404";
-import Login from "../login/Login";
 import AddCompany from "../users/admin/AddCompany";
 import AddCustomer from "../users/admin/AddCustomer";
 import GetOneCompany from "../users/admin/GetOneCompany";
@@ -35,7 +34,12 @@ import CustomerMenu from "../users/customer/CustomerMenu";
 import CustomerPage from "../users/customer/CustomerPage";
 import CouponsList from "../Coupons/CouponsList";
 import { ROUTES } from './constants';
-
+import About from "../layout/About/About";
+import Login from "../login/Login";
+import Logout from "../logout/Logout";
+import ContactUs from "../layout/ContactUs.tsx/ContactUs";
+import Coupons from "../layout/Coupons/Coupons";
+import GetCompanyDetails from "../users/company/GetCompanyDetails";
 
 function Routing(): JSX.Element {
    return (
@@ -44,9 +48,15 @@ function Routing(): JSX.Element {
 
             {/* GENERAL*/}
             <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/ContactUs" element={<ContactUs />} />
+
+            <Route path="/CouponsList" element={<CouponsList />} />
 
             <Route path="/CouponsList" element={<CouponsList />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Logout" element={<Logout />} />
+
             {/*<Route to="/home" />*/}
             <Route element={<Page404 />} /> {/* Last */}
             <Route element={<EmptyView msg={""} />} /> {/* Last */}
@@ -54,19 +64,26 @@ function Routing(): JSX.Element {
             <Route path="/AdminPage" element={<AdmainPage />} />
             <Route path="/AdminMenu" element={<AdminMenu />} />
             <Route path="/admin/AddCompany" element={<AddCompany />} />
+            <Route path="/admin/GetAllCoupons" element={<GetAllCoupons />} />
             <Route path="/admin/UpdateCompany" element={<UpdateCompany />} />
+            <Route path="/admin/UpdateCustomer" element={<UpdateCustomer />} />
+
             <Route path="/admin/GetOneCompany" element={<GetOneCompany />} />
+            <Route path="/admin/DeleteCompany" element={<DeleteCompany />} />
             <Route path="/admin/DeleteCompany" element={<DeleteCompany />} />
             <Route path="/admin/GetAllCompanies" element={<GetAllCompanies />} />
             <Route path="/admin/getOneCustomer/:customerId" element={<GetOneCustomer />} />
             <Route path="/admin/AddCustomer" element={<AddCustomer />} />
             <Route path="/admin/UpdateCustomer/:customerId" element={<UpdateCustomer />} />
-            <Route path="/admin/DeleteCustomer/:companyId" element={<DeleteCustomer />} />
+            <Route path="/admin/DeleteCustomer/:customerId" element={<DeleteCustomer />} />
             <Route path="/admin/GetAllCustomers/:companyId" element={<GetAllCustomers />} />
             {/* COMPANY*/}
             <Route path="/CompanyPage" element={<CompanyPage />} />
             <Route path="/CompanyMenu" element={<CompanyMenu />} />
+            <Route path="/Coupons" element={<Coupons />} />
             <Route path="/company/UpdateCoupon" element={<UpdateCoupon />} />
+
+            <Route path="/company/GetCompanyDetails" element={<GetCompanyDetails />} />
             <Route path="/company/AddCoupons" element={<AddCoupons />} />
             <Route path="/company/DeleteCoupon" element={<DeleteCoupon />} />
             <Route path="/company/GetCompanyCoupons" element={<GetCompanyCoupons />} />
@@ -75,7 +92,7 @@ function Routing(): JSX.Element {
             {/* CUSTOMER*/}
             <Route path="/CustomerPage" element={<CustomerPage />} />
             <Route path="/CustomerMenu" element={<CustomerMenu />} />
-            <Route path="/customer/PurchaseCoupon" element={<PurchaseCoupon />} />
+            <Route path="/customer/PurchaseCoupon" element={<PurchaseCoupon coupon={undefined} />} />
             <Route path="/customer/GetCouponsByCategory" element={<GetCouponsByCategory />} />
             <Route path="/customer/GetCouponsByPrice" element={<GetCouponsByPrice />} />
             <Route path="/customer/GetCustomerDetails" element={<GetCustomerDetails />} />

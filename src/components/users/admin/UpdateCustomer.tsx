@@ -2,7 +2,7 @@ import { Box, Button, ButtonGroup, FormControl, FormHelperText, Input, TextField
 import axios from "axios";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomerDetails from "../../models/CustomerDetails";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
@@ -10,13 +10,13 @@ import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 
 function UpdateCustomer(): JSX.Element {
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-  });
+  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  // });
   var [customerDetails, setData] = useState(new CustomerDetails());
   let id: string = "";
   let token: string = Store.getState().StoreState.loginClient.token;
@@ -122,6 +122,12 @@ function UpdateCustomer(): JSX.Element {
           </ButtonGroup>
         </form>
       </div>
+      <Button variant="contained">
+        <Link to="/AdminPage">Go To AdminPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

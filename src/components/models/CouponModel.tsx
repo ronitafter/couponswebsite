@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
+
 class CouponModel {
+   category: ReactNode;
 
    public constructor(id: number = 0, companyId: number = 0, categories: string = "", title: string = "", description: string = "", start_date: string = "", end_date: string = "", amount: number = 0, price: number = 0, image: string = "") {
       this.id = id;

@@ -1,13 +1,11 @@
 import axios from "axios";
 import { SyntheticEvent, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
 import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
-
-
-
 
 function DeleteCoupon(): JSX.Element {
   useEffect(() => {
@@ -38,10 +36,18 @@ function DeleteCoupon(): JSX.Element {
 
   }
   return (
-    <div className="deleteCoupon">
-      enter a coupon ID <br /><br />
-      <input type="number" placeholder="enter a coupon ID" onChange={updateNumber} />
-      <input type="button" value="Delete" onClick={deleteCompany} /><br />
+    <div>
+      <div className="deleteCoupon Box">
+        enter a coupon ID <br /><br />
+        <input type="number" placeholder="enter a coupon ID" onChange={updateNumber} />
+        <input type="button" value="Delete" onClick={deleteCompany} /><br />
+      </div>
+      <Button variant="contained">
+        <Link to="/CompanyPage">Go To CompanyPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

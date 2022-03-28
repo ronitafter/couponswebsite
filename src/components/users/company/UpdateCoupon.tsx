@@ -2,7 +2,7 @@ import { Box, Button, ButtonGroup, FormControl, FormHelperText, Input, MenuItem,
 import axios from 'axios';
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CouponModel from '../../models/CouponModel';
 import globals from '../../store/Globals';
 import Store from '../../store/Store';
@@ -20,13 +20,13 @@ import SubtitlesIcon from '@mui/icons-material/Subtitles';
 
 function UpdateCoupon(): JSX.Element {
   const navigate = useNavigate();
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType !== "Company") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-  });
+  //   if (Store.getState().StoreState.loginClient.clientType !== "Company") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  // });
   const { register, handleSubmit, formState: { errors } } = useForm<CouponModel>();
   var [couponModel, setCouponModela] = useState(new CouponModel());
   let id: string = "";
@@ -76,7 +76,7 @@ function UpdateCoupon(): JSX.Element {
 
   }
   return (
-    <div className="updateCoupon">
+    <div className="updateCoupon Box">
       <div className="add">
         <form onSubmit={handleSubmit(updateCoupon)}>
           <Typography variant="h4" className="HeadLine">Enter a Coupon ID to update</Typography><br />
@@ -202,12 +202,17 @@ function UpdateCoupon(): JSX.Element {
           <br />
           <span> {errors.image && <p>{errors.image.message}</p>}</span>
           <br />
-
           <ButtonGroup variant="contained" fullWidth>
             <Button type="submit" color="primary">Send</Button>
           </ButtonGroup>
         </form>
       </div>
+      <Button variant="contained">
+        <Link to="/CompanyPage">Go To CompanyPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

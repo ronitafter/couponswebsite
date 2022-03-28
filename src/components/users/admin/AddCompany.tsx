@@ -1,13 +1,10 @@
 import { AccountCircle } from "@mui/icons-material";
 import { Box, Button, ButtonGroup, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import CompanyModel from "../../models/CompanyModel";
+import { Link, useNavigate } from "react-router-dom";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 import LockIcon from '@mui/icons-material/Lock';
 import BusinessIcon from '@mui/icons-material/Business';
@@ -41,27 +38,30 @@ function AddCompany(): JSX.Element {
   }
 
   return (
-    <div className="AddCompany">
+    <div className="AddCompany Box">
       <div className="add">
         <form onSubmit={handleSubmit(send)}>
           <Typography variant="h4" className="HeadLine">Add Company</Typography><br />
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <BusinessIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField id="input-with-sx" label="Company name" variant="standard"
-              {...register("name", {
-                required: { value: true, message: "this field is required" },
-                maxLength: { value: 20, message: "max length is 20" }
-              })} />
+            // {...register("name", {
+            //   required: { value: true, message: "this field is required" },
+            //   maxLength: { value: 20, message: "max length is 20" }
+            // })} 
+            />
           </Box>
           <br />
           <span> {errors.name && <p>{errors.name.message}</p>}</span>
           <br />
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <TextField id="input-with-sx" label="Company Email" variant="standard" {...register("email", {
-              required: { value: true, message: "this field is required" },
-              maxLength: { value: 50, message: "max length is 50" }
-            })} />
+            <TextField id="input-with-sx" label="Company Email" variant="standard"
+            // {.register("email", {
+            //   required: { value: true, message: "this field is required" },
+            //   maxLength: { value: 50, message: "max length is 50" }
+            // })}
+            />
           </Box>
           <br />
           <span> {errors.email && <p>{errors.email.message}</p>}</span>
@@ -69,9 +69,10 @@ function AddCompany(): JSX.Element {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <LockIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" variant="standard"
-              {...register("password", {
-                required: { value: true, message: "this field is required" }
-              })} />
+            //   {...register("password", {
+            //     required: { value: true, message: "this field is required" }
+            //   })} 
+            />
           </Box>
           <br />
           <span> {errors.password && <p>{errors.password.message}</p>}</span>
@@ -82,6 +83,12 @@ function AddCompany(): JSX.Element {
           </ButtonGroup>
         </form>
       </div>
+      <Button variant="contained">
+        <Link to="/AdminPage">Go To AdminPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }

@@ -12,16 +12,16 @@ function GetAllCustomers(): JSX.Element {
   const [customersdata, setData] = useState([new CustomerDetails()]);
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
-  useEffect(() => {
-    if (Store.getState().StoreState.loginClient.userType !== "authorization") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-    axios.get(Globals.urls.administrator + "customers", { headers: { "authorization": token } }).then((response) => {
-      // Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-      setData(response.data)
-    }).catch(error => { console.log(error) });
-  }, []);
+  // useEffect(() => {
+  //   if (Store.getState().StoreState.loginClient.userType !== "authorization") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  axios.get(Globals.urls.administrator + "customers", { headers: { "authorization": token } }).then((response) => {
+    // Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
+    setData(response.data)
+  }).catch(error => { console.log(error) });
+  // }, []);
 
   return (
     <div className="getAllCustomers">

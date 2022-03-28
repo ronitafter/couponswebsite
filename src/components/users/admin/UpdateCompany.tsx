@@ -2,7 +2,7 @@ import { Box, Button, ButtonGroup, FormControl, FormHelperText, Input, TextField
 import axios from "axios";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CompanyDetails from "../../models/CompanyDetails";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
@@ -10,13 +10,13 @@ import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 
 function UpdateCompany(): JSX.Element {
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-      notify.error("you are not allowed to enter!")
-      navigate("/login");
-    }
-  });
+  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
+  //     notify.error("you are not allowed to enter!")
+  //     navigate("/login");
+  //   }
+  // });
   var [companyDetails, setData] = useState(new CompanyDetails());
   let id: string = "";
   const { register, handleSubmit, setError, formState: { errors } } = useForm<CompanyDetails>();
@@ -31,7 +31,7 @@ function UpdateCompany(): JSX.Element {
 
   function searchCompany() {
 
-    axios.get(Globals.urls.administrator + "company" + id, { headers: { "authorization": token } }).then((response) => {
+    axios.get(Globals.urls.administrator + "company/" + id, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
         notify.error("company is not found");
         setData(new CompanyDetails());
@@ -66,7 +66,7 @@ function UpdateCompany(): JSX.Element {
   return (
 
     <div className="updateCompany">
-      <div className="add">
+      <div className="add Box">
         <form onSubmit={handleSubmit(updateComapny)}>
           <Typography variant="h4" className="HeadLine">Enter a Company ID to change its info</Typography><br />
           <input type="number" placeholder="Please enter a company ID" onChange={updateNumber} />
@@ -121,6 +121,12 @@ function UpdateCompany(): JSX.Element {
           </ButtonGroup>
         </form>
       </div>
+      <Button variant="contained">
+        <Link to="/AdminPage">Go To AdminPage</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/Main"> Go To Home Page</Link>
+      </Button>
     </div>
   );
 }
