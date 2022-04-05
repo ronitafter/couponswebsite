@@ -8,15 +8,15 @@ import { useNavigate } from "react-router-dom";
 import CouponModel from "../../models/CouponModel";
 import axios from "axios";
 import Globals from "../../store/Globals";
-import { loginClientString } from "../../store/StoreState";
-import CouponsListProps from "../../Coupons/CouponsListProps";
+import CouponsListItem from "../../Coupons/CouponsListProps";
 import { Box, Typography } from "@mui/material";
+import { ClientType } from "../../Coupons/ClientModel";
 
 function GetCouponsByCategory(): JSX.Element {
   const navigate = useNavigate();
   useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType !== "Customer") {
+    if (Store.getState().StoreState.loginClient.clientType !== ClientType.CUSTOMER) {
       notify.error("you are not allowed to enter!")
       navigate("/login");
     }
@@ -35,7 +35,6 @@ function GetCouponsByCategory(): JSX.Element {
         setCouponModel([new CouponModel()]);
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       setCouponModel(response.data)
       console.log(response.data);
       notify.success("Coupons were found !!!");
@@ -43,7 +42,7 @@ function GetCouponsByCategory(): JSX.Element {
   }
 
   return (
-    <div className="couponsByCategory">
+    <div className="couponsByCategory Coupon-Box">
       <div className="add">
 
         <Typography variant="h4" className="HeadLine">Choose category</Typography><br />
@@ -55,14 +54,11 @@ function GetCouponsByCategory(): JSX.Element {
             <MenuItem value={"Restaurant"}>Restaurant</MenuItem>
             <MenuItem value={"Vacation"}>Vacation</MenuItem>
           </Select>
-
-
-
           <input type="button" value="Find" onClick={findCouponsByCategory} /><br />
         </Box>
         <br /> <br />
 
-        {couponModel.map(item => <CouponsListProps
+        {couponModel.map(item => <CouponsListItem
           image={item.image}
           title={item.title}
           price={item.price} id={0}

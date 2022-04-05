@@ -1,17 +1,18 @@
-import ClientModel from "../models/ClientModel";
+import ClientModel from "../Coupons/ClientModel";
 import OnlineClient from "../models/ClientDetails";
 
 //
 export class StoreState {
    public loginClient: OnlineClient = new OnlineClient();
    public isLoggein: boolean = false;
+   static loginClient: any;
 }
 
 export enum StoreActionType {
    LoginClient = "LoginClient",
    LogoutClient = "LogoutClient",
    RegisterClient = "RegisterClient",
-   LoginClientString = "LoginClientString",
+   SetClientCredentials = "SetClientCredentials",
    IsLoggedIn = "IsLoggedIn"
 
 }
@@ -37,8 +38,8 @@ export function registerClient(newClient: ClientModel): StoreAction {
    return { type: StoreActionType.RegisterClient, payload: newClient }
 }
 
-export function loginClientString(token: string): StoreAction {
-   return { type: StoreActionType.LoginClientString, payload: token }
+export function setClientCredentials(token: string, clientType: string): StoreAction {
+   return { type: StoreActionType.SetClientCredentials, payload: { token, clientType } }
 }
 
 
@@ -66,12 +67,13 @@ export function storeReducer(currentState: StoreState = new StoreState(), action
          //axios->login->data->loginUser
 
          break;
-      case StoreActionType.LoginClientString:
+      case StoreActionType.SetClientCredentials:
+         const { token, clientType } = action.payload;
+         newState.loginClient.token = token;
+         newState.loginClient.clientType = clientType
+         localStorage.setItem("token", token);
 
-         newState.loginClient.token = action.payload;
-         localStorage.setItem("token", newState.loginClient.token);
-
-         localStorage.setItem("userType", newState.loginClient.userType);
+         localStorage.setItem("clientType", newState.loginClient.clientType);
          if (newState.loginClient.clientType !== "Administrator") {
 
             localStorage.setItem("id", newState.loginClient.clientId);

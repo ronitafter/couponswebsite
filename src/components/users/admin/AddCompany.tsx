@@ -9,21 +9,22 @@ import notify from "../../utils/Notify";
 import LockIcon from '@mui/icons-material/Lock';
 import BusinessIcon from '@mui/icons-material/Business';
 import CompanyDetails from "../../models/CompanyDetails";
+import { useEffect } from "react";
+import { send } from "process";
+import { ClientType } from "../../Coupons/ClientModel";
 // import "./Login.css";
 
 
-
-
 function AddCompany(): JSX.Element {
-  // useEffect(() => {
-  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-  //     notify.error("you are not allowed to enter!")
-  //     navigate("/login");
-  //   }
-  // });
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (Store.getState().StoreState.loginClient.clientType !== ClientType.ADMINISTRATOR) {
+      notify.error("you are not allowed to enter!")
+      navigate("/login");
+    }
+  }, []);
 
   const { register, handleSubmit, reset: resetForm, formState: { errors } } = useForm<CompanyDetails>();
-  const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
 
 
@@ -32,9 +33,9 @@ function AddCompany(): JSX.Element {
       await axios.post<string>(Globals.urls.administrator + "company", companyDetails, { headers: { "authorization": token } })
       notify.success('Successfully added company');
       resetForm();
-    } catch (e) {
-      notify.error('Error while adding a company');
-    }
+    } catch (errors) {
+      notify.error('Error while adding a company')
+    };
   }
 
   return (
@@ -45,10 +46,10 @@ function AddCompany(): JSX.Element {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <BusinessIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField id="input-with-sx" label="Company name" variant="standard"
-            // {...register("name", {
-            //   required: { value: true, message: "this field is required" },
-            //   maxLength: { value: 20, message: "max length is 20" }
-            // })} 
+              {...register("name", {
+                required: { value: true, message: "this field is required" },
+                maxLength: { value: 20, message: "max length is 20" }
+              })}
             />
           </Box>
           <br />
@@ -57,10 +58,10 @@ function AddCompany(): JSX.Element {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField id="input-with-sx" label="Company Email" variant="standard"
-            // {.register("email", {
-            //   required: { value: true, message: "this field is required" },
-            //   maxLength: { value: 50, message: "max length is 50" }
-            // })}
+              {...register("email", {
+                required: { value: true, message: "this field is required" },
+                maxLength: { value: 50, message: "max length is 50" }
+              })}
             />
           </Box>
           <br />
@@ -69,9 +70,9 @@ function AddCompany(): JSX.Element {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
             <LockIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
             <TextField id="standard-password-input" label="Password" type="password" autoComplete="current-password" variant="standard"
-            //   {...register("password", {
-            //     required: { value: true, message: "this field is required" }
-            //   })} 
+              {...register("password", {
+                required: { value: true, message: "this field is required" }
+              })}
             />
           </Box>
           <br />
@@ -92,5 +93,5 @@ function AddCompany(): JSX.Element {
     </div>
   );
 }
-
 export default AddCompany;
+

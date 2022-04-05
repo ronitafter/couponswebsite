@@ -67,6 +67,23 @@ body,
   font-weight: 500;
 }
 
+.Coupon-Box {
+  padding-top: 20px !important;
+  text-align: center;
+  padding: 30px 30px;
+  margin: 10px;
+  padding-top: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px;
+  /* background-color: #dddddd; */
+  /* color: #49474a !important; */
+  background-color: rgb(241 241 241);
+  color: #49474a;
+
+  line-height: 1 !important;
+  font-weight: 500;
+}
+
 .Box2 {
   text-align: center;
   margin: 5px;

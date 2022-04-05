@@ -6,16 +6,6 @@ import Store from "../../store/Store";
 import notify from "../../utils/Notify";
 
 function CustomerMenu(): JSX.Element {
-
-   // const navigate = useNavigate();
-
-   // useEffect(() => {
-
-   //    if (Store.getState().StoreState.loginClient.clientType != "Company") {
-   //       notify.error("you are not allowed to enter!")
-   //       navigate("/login");
-   //    }
-   // });
    return (
       <div>
 
@@ -25,13 +15,16 @@ function CustomerMenu(): JSX.Element {
                   <Link to="/customer/PurchaseCoupon">Purchase Coupons</Link>
                </Button>
                <Button variant="contained Box2">
+                  <Link to="/customer/CouponDetails">CouponDetailss</Link>
+               </Button>
+               <Button variant="contained Box2">
                   <Link to="/customer/GetCouponsByPrice">Coupon Prices</Link>
                </Button>
                <Button variant="contained Box2">
                   <Link to="/customer/GetCustomerDetails">My Info</Link>
                </Button>
                <Button variant="contained Box2">
-                  <Link to="customer/GetCouponsByCategory">Coupons Category</Link>
+                  <Link to="/customer/GetCouponsByCategory">Coupons Category</Link>
                </Button>
                <Button variant="contained Box2">
                   <Link to="/customer/GetAllCoupons"> My Coupons</Link>

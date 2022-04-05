@@ -1,28 +1,27 @@
 import { AccountCircle } from "@mui/icons-material";
 import { Box, TextField, Typography } from "@mui/material";
 import axios from "axios";
-// import console from "console";
 import { useEffect } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import CustomerDetails from "../../models/CustomerDetails";
 import "./AddCustomer.css";
+import { ClientType } from "../../Coupons/ClientModel";
 
 function AddCustomer(): JSX.Element {
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-  //     notify.error("client not authorized")
-  //     navigate("/login");
-  //   }
-  // });
+    if (Store.getState().StoreState.loginClient.clientType !== ClientType.ADMINISTRATOR) {
+      notify.error("client not authorized")
+      navigate("/login");
+    }
+  }, []);
   const { register, handleSubmit, reset: resetForm, formState: { errors } } = useForm<CustomerDetails>();
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import CustomerDetails from "../../models/CustomerDetails";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 
 function GetOneCustomer(): JSX.Element {
@@ -33,7 +32,6 @@ function GetOneCustomer(): JSX.Element {
         setData(new CustomerDetails());
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       setData(response.data)
       console.log(response.data);
       notify.success("Customer was found !!!");

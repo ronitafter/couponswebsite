@@ -2,20 +2,21 @@ import { Typography } from "@mui/material";
 import { useEffect } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { ClientType } from "../../Coupons/ClientModel";
 import Store from "../../store/Store";
 import notify from "../../utils/Notify";
 
 function AdminMenu(): JSX.Element {
 
-   // const navigate = useNavigate();
+   const navigate = useNavigate();
 
-   // useEffect(() => {
+   useEffect(() => {
 
-   //    if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-   //       notify.error("you are not allowed to enter!")
-   //       navigate("/login");
-   //    }
-   // });
+      if (Store.getState().StoreState.loginClient.clientType !== ClientType.ADMINISTRATOR) {
+         notify.error("you are not allowed to enter!")
+         navigate("/login");
+      }
+   });
    return (
       <div>
          <div className="adminMenu Box" id="adminMenu">
@@ -28,6 +29,9 @@ function AdminMenu(): JSX.Element {
                </Button>
                <Button variant="contained Box2">
                   <Link to="/admin/deleteCompany">Delete Company</Link>
+               </Button>
+               <Button variant="contained Box2">
+                  <Link to="/admin/GetAllCustomers">Customers</Link>
                </Button>
                <Button variant="contained Box2">
                   <Link to="/admin/getAllCompanies">Companies</Link>

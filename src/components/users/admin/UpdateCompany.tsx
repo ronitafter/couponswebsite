@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CompanyDetails from "../../models/CompanyDetails";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
+import { setClientCredentials } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 
 function UpdateCompany(): JSX.Element {

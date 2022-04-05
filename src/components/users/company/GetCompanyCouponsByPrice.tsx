@@ -3,23 +3,21 @@ import axios from "axios";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import CouponModel from "../../models/CouponModel";
-import CouponsListProps from "../../Coupons/CouponsListProps";
+import CouponsListItem from "../../Coupons/CouponsListProps";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
-
-
+import { ClientType } from "../../Coupons/ClientModel";
 
 
 function GetCompanyCouponsByPrice(): JSX.Element {
   useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType !== "Company") {
+    if (Store.getState().StoreState.loginClient.clientType !== ClientType.COMPANY) {
       notify.error("you are not allowed to enter!")
       navigate("/login");
     }
-  });
+  }, []);
   const [coupons, setCoupons] = useState([new CouponModel()]);
   let price: string = "";
   const navigate = useNavigate();
@@ -29,9 +27,6 @@ function GetCompanyCouponsByPrice(): JSX.Element {
     price = (args.target as HTMLInputElement).value.toString();
   }
 
-
-
-
   function findCouponsByCategory() {
     axios.get(Globals.urls.company + "coupon" + price, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
@@ -39,7 +34,6 @@ function GetCompanyCouponsByPrice(): JSX.Element {
         setCoupons([new CouponModel()]);
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       const { id, companyId, categories, title, description, start_date, end_date, amount, price, image } = response.data.couponModel;
       setCoupons([new CouponModel(response.data.couponModel)]);
       console.log(response.data.couponModel);
@@ -55,7 +49,7 @@ function GetCompanyCouponsByPrice(): JSX.Element {
           <input type="number" placeholder="Please enter a coupon ID" onChange={updateNumber} />
           <input type="button" value="Find" onClick={findCouponsByCategory} /><br />
         </Box>
-        {coupons.map(item => <CouponsListProps
+        {coupons.map(item => <CouponsListItem
           image={item.image}
           title={item.title}
           price={item.price} id={0}

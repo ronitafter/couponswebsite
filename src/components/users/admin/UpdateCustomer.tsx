@@ -6,17 +6,16 @@ import { Link, useNavigate } from "react-router-dom";
 import CustomerDetails from "../../models/CustomerDetails";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 
 function UpdateCustomer(): JSX.Element {
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
-  //     notify.error("you are not allowed to enter!")
-  //     navigate("/login");
-  //   }
-  // });
+    if (Store.getState().StoreState.loginClient.clientType != "Administrator") {
+      notify.error("you are not allowed to enter!")
+      navigate("/login");
+    }
+  }, []);
   var [customerDetails, setData] = useState(new CustomerDetails());
   let id: string = "";
   let token: string = Store.getState().StoreState.loginClient.token;
@@ -47,7 +46,7 @@ function UpdateCustomer(): JSX.Element {
     customerDetails1.id = customerDetails.id;
 
     console.log(customerDetails1);
-    console.log(Globals.urls.administrator + "updateCompany");
+    console.log(Globals.urls.administrator + "company");
     axios.post<string>(Globals.urls.administrator + "updateCustomer", customerDetails1, { headers: { "authorization": token } })
       .then((response) => {
         notify.success("successfully updated");

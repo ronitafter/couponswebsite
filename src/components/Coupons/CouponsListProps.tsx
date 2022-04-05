@@ -14,7 +14,7 @@ interface CouponsListPropsProps {
    price: number
 }
 
-function CouponsListProps(props: CouponsListPropsProps): JSX.Element {
+function CouponsListItem(props: CouponsListPropsProps): JSX.Element {
    let navigate = useNavigate();
 
    function showCoupon() {
@@ -22,28 +22,27 @@ function CouponsListProps(props: CouponsListPropsProps): JSX.Element {
    }
 
    const size = 50;
- 
+
    return (
       <div className="CouponsListProps couponBox">
-   
-
-            <h1>Coupon</h1><hr />{props.title}<hr />
-            {props.categories}<br />
-            {props.amount}<br />
-            {props.price + " ₪"}<br />
-            {props.image}<br /><br />
-
-            <img src={props.image} alt="" className="cardImg" />
-            <h2 className="card_name">{props.title}</h2>
-            <p className="card_price">{props.price + " ₪"}</p>
-         <button className="card_btn" onClick={showCoupon}>More Info</button>
-
-       
 
 
-         
+         <h1>Coupon</h1><hr />{props.title}<hr />
+         {props.categories}<br />
+         {props.amount}<br />
+         {props.price + " ₪"}<br />
+         {props.image}<br /><br />
+
+         <img src={props.image} alt="" className="cardImg" />
+         <h2 className="card_name">{props.title}</h2>
+         <p className="card_price">{props.price + " ₪"}</p>
+
+
+
+
+
       </div>
-      );
+   );
 }
 
-export default CouponsListProps;
+export default CouponsListItem;

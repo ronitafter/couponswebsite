@@ -1,4 +1,3 @@
-// import { Box, MenuItem, Select, Typography } from "@mui/material";
 import { Select, MenuItem } from "@material-ui/core";
 import CategoryIcon from '@mui/icons-material/Category';
 import { useEffect, useState } from "react";
@@ -8,17 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import CouponModel from "../../models/CouponModel";
 import axios from "axios";
 import Globals from "../../store/Globals";
-import { loginClientString } from "../../store/StoreState";
-import CouponsListProps from "../../Coupons/CouponsListProps";
+import CouponsListItem from "../../Coupons/CouponsListProps";
 import { Box, Button, Typography } from "@mui/material";
-
-
-
+import { ClientType } from "../../Coupons/ClientModel";
 
 function GetCompanyCouponsByCategory(): JSX.Element {
   useEffect(() => {
 
-    if (Store.getState().StoreState.loginClient.clientType !== "Company") {
+    if (Store.getState().StoreState.loginClient.clientType !== ClientType.COMPANY) {
       notify.error("you are not allowed to enter!")
       navigate("/login");
     }
@@ -30,9 +26,6 @@ function GetCompanyCouponsByCategory(): JSX.Element {
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => { const values = event.target.value; setValue(values as string); };
 
-
-
-
   function findCouponsByCategory() {
     axios.get(Globals.urls.company + "coupon/category" + value, { headers: { "authorization": token } }).then((response) => {
       if (response.data.length < 1) {
@@ -40,7 +33,6 @@ function GetCompanyCouponsByCategory(): JSX.Element {
         setCouponModel([new CouponModel()]);
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       setCouponModel(response.data)
       console.log(response.data);
       notify.success("Coupons were found !!!");
@@ -64,13 +56,11 @@ function GetCompanyCouponsByCategory(): JSX.Element {
             <MenuItem value={"Fashion"}>Fashion</MenuItem>
           </Select>
 
-
-
           <input type="button" value="Find" onClick={findCouponsByCategory} /><br />
         </Box>
         <br /> <br />
 
-        {couponModel.map(item => <CouponsListProps
+        {couponModel.map(item => <CouponsListItem
           image={item.image}
           title={item.title}
           price={item.price} id={0}

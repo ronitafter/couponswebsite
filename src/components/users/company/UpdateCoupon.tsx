@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import CouponModel from '../../models/CouponModel';
 import globals from '../../store/Globals';
 import Store from '../../store/Store';
-import { loginClientString } from '../../store/StoreState';
 import notify from '../../utils/Notify';
 import PinIcon from '@mui/icons-material/Pin';
 import CategoryIcon from '@mui/icons-material/Category';
@@ -15,18 +14,19 @@ import ImageIcon from '@mui/icons-material/Image';
 import DescriptionIcon from '@mui/icons-material/Description';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SubtitlesIcon from '@mui/icons-material/Subtitles';
+import { ClientType } from '../../Coupons/ClientModel';
 
 
 
 function UpdateCoupon(): JSX.Element {
   const navigate = useNavigate();
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if (Store.getState().StoreState.loginClient.clientType !== "Company") {
-  //     notify.error("you are not allowed to enter!")
-  //     navigate("/login");
-  //   }
-  // });
+    if (Store.getState().StoreState.loginClient.clientType !== ClientType.COMPANY) {
+      notify.error("you are not allowed to enter!")
+      navigate("/login");
+    }
+  }, []);
   const { register, handleSubmit, formState: { errors } } = useForm<CouponModel>();
   var [couponModel, setCouponModela] = useState(new CouponModel());
   let id: string = "";
@@ -47,15 +47,12 @@ function UpdateCoupon(): JSX.Element {
     console.log(couponModel1);
     console.log(globals.urls.company + "coupon");
     axios.post<string>(globals.urls.company + "coupon", couponModel1, { headers: { "Authorization": token } }).then((response) => {
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       console.log(response.data);
       notify.success("successfully updated");
       navigate("/companyMenu");
     }).catch(error => {
-
       notify.error("error while updating a coupon")
     });
-
     new CouponModel();
 
   }
@@ -68,7 +65,6 @@ function UpdateCoupon(): JSX.Element {
         setCouponModela(new CouponModel());
         return;
       }
-      Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       setCouponModela(response.data)
       console.log(response.data);
       notify.success("Coupon was found !!!");

@@ -7,7 +7,7 @@ class DevelopmentGlobals extends Globals {
       company: "/company/",
       customer: "/customer/",
       images: "/images/",
-      login: "/admin/login/",
+      login: "/login",
    }
 }
 class ProductionGlobals extends Globals {
@@ -16,7 +16,8 @@ class ProductionGlobals extends Globals {
       company: "/company/",
       customer: "/customer/",
       images: "/images/",
-      login: "/admin/login",
+      login: "/login",
+      coupons: "/admin/coupons",
       general: "/"
 
    }

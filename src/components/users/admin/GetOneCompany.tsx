@@ -6,7 +6,6 @@ import CompanyDetails from "../../models/CompanyDetails";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
 import store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
 
 function GetOneCompany(): JSX.Element {
@@ -38,7 +37,6 @@ function GetOneCompany(): JSX.Element {
       }
       setData(response.data)
       console.log(response.data);
-      // store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
       notify.success("Company was found !!!");
     }).catch(error => { console.log(error) });
   }

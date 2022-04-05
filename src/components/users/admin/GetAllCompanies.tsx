@@ -6,24 +6,23 @@ import CompanyDetails from "../../models/CompanyDetails";
 import CompanyProps from "../../props/CompanyProps";
 import Globals from "../../store/Globals";
 import Store from "../../store/Store";
-import { loginClientString } from "../../store/StoreState";
 import notify from "../../utils/Notify";
+import "./GetAllCompanies.css";
 
 function GetAllCompanies(): JSX.Element {
   const [companyData, setData] = useState([new CompanyDetails()]);
   const navigate = useNavigate();
   let token: string = Store.getState().StoreState.loginClient.token;
-  // useEffect(() => {
-  //   if (Store.getState().StoreState.loginClient.userType !== "Administrator") {
-  //     notify.error("you are not allowed to enter!")
-  //     navigate("/login");
-  //   }
-  axios.get(Globals.urls.administrator + "companies", { headers: { "authorization": token } })
-    .then((response) => {
-      // Store.dispatch(loginClientString(response.headers.Authorization = `${token}`));
-      setData(response.data)
-    }).catch(error => { console.log(error) });
-  // }, []);
+  useEffect(() => {
+    if (Store.getState().StoreState.loginClient.userType !== "Administrator") {
+      notify.error("you are not allowed to enter!")
+      navigate("/login");
+    }
+    axios.get(Globals.urls.administrator + "companies", { headers: { "authorization": token } })
+      .then((response) => {
+        setData(response.data)
+      }).catch(error => { console.log(error) });
+  }, []);
   return (
     <div className="getAllCompanies">
       <div className="companies">

@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import Globals from '../../store/Globals';
 import Store from '../../store/Store';
-import { loginClientString } from '../../store/StoreState';
 import notify from '../../utils/Notify';
 
 
@@ -15,7 +14,7 @@ function DeleteCompany(): JSX.Element {
       notify.error("you are not allowed to enter!")
       navigate("/login");
     }
-  });
+  }, []);
 
   let id: string = "";
   const navigate = useNavigate();
